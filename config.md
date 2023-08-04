@@ -19,7 +19,7 @@ ignore = ["node_modules/"]
 generate_rss = true
 website_title = "Jin-Guo Liu Group"
 website_descr = "Jin-Guo Liu Group Website"
-website_url = get(ENV, "PREVIEW_FRANKLIN_WEBSITE_URL", "giggleliu.github.io/group-website") # Just put the website name
+website_url = get(ENV, "PREVIEW_FRANKLIN_WEBSITE_URL", "https://giggleliu.github.io/happy-binaries-website/") # Just put the website name
 +++
 
 <!--
