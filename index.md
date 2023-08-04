@@ -4,6 +4,7 @@
 # Jin-Guo Liu Group
 We are happy entangled binaries. We use program to explore the quantum world, and use quantum theory to understand the nature of computation.
 
+## Email and Address
 ~~~
 <a href="mailto:jinguoliu@hkust-gz.edu.cn" style="color:blue; font-weight:800">jinguoliu@hkust-gz.edu.cn</a>
 ~~~
