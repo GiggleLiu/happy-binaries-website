@@ -19,7 +19,8 @@ ignore = ["node_modules/"]
 generate_rss = true
 website_title = "Jin-Guo Liu Group"
 website_descr = "Jin-Guo Liu Group Website"
-website_url = get(ENV, "PREVIEW_FRANKLIN_WEBSITE_URL", "https://giggleliu.github.io/happy-binaries-website/") # Just put the website name
+prepath = get(ENV, "PREVIEW_FRANKLIN_PREPATH", "happy-binary-website") # In the third argument put the prepath you normally use
+website_url = get(ENV, "PREVIEW_FRANKLIN_WEBSITE_URL", "giggleliu.github.io/happy-binaries-website/") # Just put the website name
 +++
 
 <!--
