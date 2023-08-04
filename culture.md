@@ -3,6 +3,8 @@ title = "Culture"
 +++
 
 # Culture
+We have lunch and coffee together during workdays.
+
 ## Events
 * [Coding club](https://github.com/CodingThrust/CodingClub), please join zulip stream: `#♣ coding-club`.
 * [Quantum Journal Club (TBA)]()
