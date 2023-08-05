@@ -11,7 +11,9 @@ tags = ["people", "students", "members"]
     * Tags: quantum information, computational complexity
 ## Students
 * Yu-Sheng Zhao
+    * [Home page](https://exaclior.github.io/)
     * Email: [yzhao053@connect.hkust-gz.edu.cn](mailto:yzhao053@connect.hkust-gz.edu.cn)
+    * Tags: quantum information
 
 
 ## Research assistants
