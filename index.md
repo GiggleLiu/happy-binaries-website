@@ -1,7 +1,11 @@
 @def title = "Jin-Guo Liu Group"
 @def tags = ["index", "group", "Jinguo Liu"]
 
-# Jin-Guo Liu Group
+~~~
+<h1>
+Jin-Guo <img src="/assets/favicon.png" style="width:1em; margin-bottom:-0.2em; margin-left:-2.8em"/>iu's Group
+</h1>
+~~~
 We are happy entangled binaries. We use program to explore the quantum world, and use quantum theory to understand the nature of computation.
 
 ## Email and Address
