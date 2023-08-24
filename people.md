@@ -22,9 +22,11 @@ tags = ["people", "students", "members"]
 * Tags: quantum computing, quantum information
 
 #### Qing-Yun Qian
+@@img-small ![Photo](/assets/avatars/qingyunqian.jpg) @@
+* Tags: quantum information, quantum thermodynamics
 
-@@img-small ![Photo](/assets/avatars/yidaizhang.jpeg) @@
 #### Yi-Dai Zhang
+@@img-small ![Photo](/assets/avatars/yidaizhang.jpeg) @@
 
 ## Research assistants
 @@img-small ![Photo](/assets/avatars/panzhou.jpg) @@
