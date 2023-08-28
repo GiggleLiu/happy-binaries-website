@@ -1,4 +1,4 @@
-Sitemap: giggleliu.github.io/happy-binaries-website/sitemap.xml
+Sitemap: www.jinguo-group.science/sitemap.xml
 
 User-agent: *
 Disallow:
