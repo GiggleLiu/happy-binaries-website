@@ -7,4 +7,4 @@ title = "Teaching"
     * [2023 Spring](https://github.com/GiggleLiu/ModernScientificComputing)
 
 2. Modern Quantum Mechanics:
-    * [2023 Autumn (TBA)]()
+    * [2023 Fall (TBA)]()
