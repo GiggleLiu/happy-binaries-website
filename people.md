@@ -19,17 +19,20 @@ tags = ["people", "students", "members"]
 
 #### Zhong-Yi Ni
 @@img-small ![Photo](/assets/avatars/zhongyini.jpeg) @@
+* Email: [zni573@connect.hkust-gz.edu.cn](mailto:zni573@connect.hkust-gz.edu.cn)
 * Tags: quantum computing, quantum information
 
 #### Qing-Yun Qian
 @@img-small ![Photo](/assets/avatars/qingyunqian.jpg) @@
+* Email: [qqian716@connect.hkust-gz.edu.cn](qqian716@connect.hkust-gz.edu.cn)
 * Tags: quantum information, quantum thermodynamics
 
 #### Yi-Dai Zhang
 @@img-small ![Photo](/assets/avatars/yidaizhang.jpeg) @@
+* Email: [yzhang958@connect.hkust-gz.edu.cn](yzhang958@connect.hkust-gz.edu.cn)
 
 ## Research assistants
 @@img-small ![Photo](/assets/avatars/panzhou.jpg) @@
 #### Pan Zhou
 * Email: [panzhou@hkust-gz.edu.cn](panzhou@hkust-gz.edu.cn)
-* Tags: tensor network, combinatorial optimization, quantum many body theory
+* Tags: tensor network, combinatorial optimization, quantum many-body theory
