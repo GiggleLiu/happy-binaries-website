@@ -20,4 +20,5 @@ W1-315, No.1 Duxue Road, Qingsheng Hub Cluster, Nansha District, Guangzhou (5114
 ## Join us
 We are recruiting PhD students and research assistants, please write an email to the above email address, with your CV attached. Please read this [Zhihu Blog](https://zhuanlan.zhihu.com/p/566530117) for more information.
 
-![image place holder]()
+![Photo](/assets/group.jpg)
+

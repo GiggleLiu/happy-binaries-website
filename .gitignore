@@ -10,3 +10,4 @@ node_modules
 package.json
 __site/
 *.swp
+Manifest.toml
