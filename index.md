@@ -9,16 +9,15 @@ We are happy entangled binaries. We use program to explore the quantum world, an
 <a href="mailto:jinguoliu@hkust-gz.edu.cn" style="color:blue; font-weight:800">jinguoliu@hkust-gz.edu.cn</a>
 ~~~
 
-Advanced Material Thrust, Function Hub, Hong Kong University of Science and Technology (Guangzhou)
+[Advanced Material Thrust](https://funh.hkust-gz.edu.cn/en/thrust/amat), Function Hub, [Hong Kong University of Science and Technology (Guangzhou)](https://www.hkust-gz.edu.cn/)
 
 W1-315, No.1 Duxue Road, Qingsheng Hub Cluster, Nansha District, Guangzhou (511458)
 
-## Links
-* [HKUST-GZ University website](https://www.hkust-gz.edu.cn/) and [advanced material thrust website](https://funh.hkust-gz.edu.cn/en/thrust/amat).
-* Join [HKUST-GZ Zulip](http://zulip.hkust-gz.edu.cn/) for discussion. To get an invitation, please write an email to the above email address.
 
 ## Join us
 We are recruiting PhD students and research assistants, please write an email to the above email address, with your CV attached. Please read this [Zhihu Blog](https://zhuanlan.zhihu.com/p/566530117) for more information.
+
+Join [HKUST-GZ Zulip](http://zulip.hkust-gz.edu.cn/) for discussion. To get an invitation, please write an email to my email address above.
 
 ![Photo](/assets/group.jpg)
 
