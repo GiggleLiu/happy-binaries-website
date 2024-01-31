@@ -2,7 +2,7 @@
 @def tags = ["index", "group", "Jinguo Liu"]
 
 # Jin-Guo Liu's Group
-We are happy entangled binaries. We use program to explore the quantum world, and use quantum theory to understand the nature of computation.
+We are happy computational physicists, we use program to explore the quantum world, and use quantum theory to understand the nature of computation.
 
 ## Email and Address
 ~~~
