@@ -21,6 +21,8 @@ tags = ["publications", "paper", "research"]
   * Invited Talk: [Harnessing Natural Compounds for Universal Quantum Computing](/assets/slides/CCMP2023.pdf)
 * 2023-07-26 @ [第七届统计物理与复杂系统会议](https://conferences.koushare.com/spcsc2023)
   * Invited Talk: [Bayesian inference with tensor networks (基于张量网络的贝叶斯推断理论)](/assets/slides/Probabilistic-inference.pdf)
+* 2023-08-28 to 2023-09-01 @ [23rd Asian Quantum Information Science Conference](http://aqis-conf.org/2023/)
+  * Committee member
 * 2023-10-09 @ [Julia User Group Munich](https://discourse.julialang.org/t/juliausergroupmunich-jinguo-liu-quantum-computing-with-yao-jl/104248)
   * Yao.jl - a high quantum simulator written in pure Julia. [Video](https://youtu.be/b-JzPrtv-yo), [Code](https://github.com/GiggleLiu/YaoTutorial)
 * 2023-12-09 @ [科学计算与 Julia 技术研讨会](https://mp.weixin.qq.com/s/YAD_Tehf3pNDuuw1MxUvrQ)
