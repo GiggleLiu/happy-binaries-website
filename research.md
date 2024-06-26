@@ -8,9 +8,6 @@ tags = ["publications", "paper", "research"]
 ## Google Scholars
 * [Jin-Guo Liu](https://scholar.google.com/citations?user=4edw228AAAAJ)
 
-## Paper Highlight
-* [TensorInference: A Julia package for tensor-based probabilistic inference](https://joss.theoj.org/papers/a6792845b2522b07898cd35e246ec4d2)
-
 ## Talks
 * 2023-08-20~2023-08-25 @ [10th International Congress on Industrial and Applied Mathematics](https://iciam2023.org/)
   * Poster: [Computing solution space properties of combinatorial optimization problems via generic tensor networks](/assets/slides/Poster-GTN.pdf)
@@ -29,3 +26,7 @@ tags = ["publications", "paper", "research"]
   * Invited Talk: 量子模拟器 Yao.jl 的回顾与新特性
 * 2023-12-11 @ Seminars for Quantum Dynamics, 福田量子院 IQA-717
   * Seminar Talk: Computer-assisted gadget design and problem reduction of unweighted maximum independent set. [Photo](/assets/images/qudyn.jpg), [Poster](/assets/images/poster-qudyn.jpg)
+* 2024-01-10 @ 量子信息-青年论坛，合肥国家实验室
+  * Invited Talk: Computer-assisted gadget design and problem reduction of unweighted maximum independent set
+* 2024-06-21 @ [The 1st Workshop on Quantum Computation meets Quantum Many-Body Computation](http://qcqmbc2024.cpsjournals.cn/)
+  * Invited Talk: Computing solution space properties of combinatorial optimization problems via generic tensor networks
