@@ -1,14 +1,9 @@
 +++
-title = "Culture"
+title = "Workflows"
 +++
 
-# Culture
+# Workflows
 
-## Events
-* [Coding club](https://github.com/CodingThrust/CodingClub), please join zulip stream: `#♣ coding-club` (write an email to [jinguoliu@hkust-gz.edu.cn](mailto:jinguoliu@hkust-gz.edu.cn) to get an invitation).
-* [Quantum Journal Club (TBA)]()
-
-## Conventions
 * Discussion:
     - All of us use [HKUST-GZ Zulip](zulip.hkust-gz.edu.cn) for topic based discussion, project management, information sharing and seeking for AI's (a robot named `ChatGPT`) help.
     - We have a WeChat group for have lunch and coffee together during workdays.
@@ -21,7 +16,7 @@ The following three books are used for training:
 - Golub G H, Van Loan C F. Matrix computations. JHU press, 2013.
 
 The following resources are used for Julia programming language training:
-- https://benlauwens.github.io/ThinkJulia.jl/latest/book.html
-- https://github.com/JuliaComputing/Training
+- [https://benlauwens.github.io/ThinkJulia.jl/latest/book.html](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html)
+- [https://github.com/JuliaComputing/Training](https://github.com/JuliaComputing/Training)
 
 Please check [training materials](/training) page for more resourses.
