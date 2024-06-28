@@ -2,7 +2,7 @@
 @def tags = ["index", "group", "Jinguo Liu"]
 
 # Jin-Guo Liu's Group
-We are happy computational physicists, we use program to explore the quantum world, and use quantum theory to understand the nature of computation.
+We embed computational hard problems a quantum device, to understand the nature of computation.
 
 ## Email and Address
 ~~~
