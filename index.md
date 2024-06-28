@@ -9,7 +9,7 @@ We are happy computational physicists, we use program to explore the quantum wor
 <a href="mailto:jinguoliu@hkust-gz.edu.cn" style="color:blue; font-weight:800">jinguoliu@hkust-gz.edu.cn</a>
 ~~~
 
-[Advanced Material Thrust](https://funh.hkust-gz.edu.cn/en/thrust/amat), Function Hub, [Hong Kong University of Science and Technology (Guangzhou)](https://www.hkust-gz.edu.cn/)
+[Advanced Material Thrust](https://amat.hkust-gz.edu.cn/), Function Hub, [Hong Kong University of Science and Technology (Guangzhou)](https://www.hkust-gz.edu.cn/)
 
 W1-315, No.1 Duxue Road, Qingsheng Hub Cluster, Nansha District, Guangzhou (511458)
 
