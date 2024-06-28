@@ -4,15 +4,12 @@
 # Jin-Guo Liu's Group
 We embed computational hard problems a quantum device, to understand the nature of computation.
 
-## Email and Address
+## Contact
 ~~~
 <a href="mailto:jinguoliu@hkust-gz.edu.cn" style="color:blue; font-weight:800">jinguoliu@hkust-gz.edu.cn</a>
 ~~~
 
 [Advanced Material Thrust](https://amat.hkust-gz.edu.cn/), Function Hub, [Hong Kong University of Science and Technology (Guangzhou)](https://www.hkust-gz.edu.cn/)
-
-W1-315, No.1 Duxue Road, Qingsheng Hub Cluster, Nansha District, Guangzhou (511458)
-
 
 ## Join us
 We are recruiting PhD students and research assistants, please write an email to the above email address, with your CV attached. Please read this [Zhihu Blog](https://zhuanlan.zhihu.com/p/566530117) for more information.
