@@ -32,7 +32,3 @@ tags = ["people", "students", "members"]
 * Email: [yzhang958@connect.hkust-gz.edu.cn](yzhang958@connect.hkust-gz.edu.cn)
 
 ## Research assistants
-@@img-small ![Photo](/assets/avatars/panzhou.jpg) @@
-#### Pan Zhou
-* Email: [panzhou@hkust-gz.edu.cn](panzhou@hkust-gz.edu.cn)
-* Tags: tensor network, combinatorial optimization, quantum many-body theory
