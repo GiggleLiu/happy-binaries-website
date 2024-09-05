@@ -30,3 +30,7 @@ tags = ["publications", "paper", "research"]
   * Invited Talk: Computer-assisted gadget design and problem reduction of unweighted maximum independent set
 * 2024-06-21 @ [The 1st Workshop on Quantum Computation meets Quantum Many-Body Computation](http://qcqmbc2024.cpsjournals.cn/)
   * Invited Talk: Computing solution space properties of combinatorial optimization problems via generic tensor networks
+* 2024-07-09~2024-07-13 @ [JuliaCon 2024](https://juliacon.org/2024/)
+  * Talk (By Zhong-Yi Ni): [Tensor Network for Quantum Error Correction](https://www.bilibili.com/video/BV11A8me3EAq/?vd_source=5604f5653ca22c5b9d761350e1b4a265)
+* 2024-08-18~2024-08-20 @ [CPS International Young Scientists Forum on Quantum Computing](http://meeting.cps-net.org.cn/IYSFQC2024)
+  * Invited Talk: Fault-tolerant quantum computing with a single arbitrary quantum gate
