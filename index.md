@@ -16,5 +16,5 @@ We are recruiting PhD students and research assistants, please write an email to
 
 Join [HKUST-GZ Zulip](http://zulip.hkust-gz.edu.cn/) for discussion. To get an invitation, please write an email to my email address above.
 
-![Photo](/assets/group.jpg)
+[![Photo](/assets/group.jpg)](/assets/group.jpg)
 
