@@ -34,3 +34,15 @@ tags = ["publications", "paper", "research"]
   * Talk (By Zhong-Yi Ni): [Tensor Network for Quantum Error Correction](https://www.bilibili.com/video/BV11A8me3EAq/?vd_source=5604f5653ca22c5b9d761350e1b4a265)
 * 2024-08-18~2024-08-20 @ [CPS International Young Scientists Forum on Quantum Computing](http://meeting.cps-net.org.cn/IYSFQC2024)
   * Invited Talk: Fault-tolerant quantum computing with a single arbitrary quantum gate
+* 2024-09-24~2024-09-27 @ [Current and Future Computational Approaches to Quantum Many-Body Systems 2024 (CompQMB2024)](https://qc-hybrid.github.io/CompQMB2024/)
+  * Invited Talk: Computing solution space properties of combinatorial optimization problems via generic tensor networks
+* 2024-11-01~2024-11-03 @ JuliaCN 2024 Meetup
+  * Organizer
+* 2024-11-04 @ Beijing Normal University
+  * Seminar Talk: Generic tensor networks and its application in combinatorial optimization and probabilistic inference
+* 2024-11-09 @ CCF China open source conference (中国开源大会)
+  * Invited Talk: Large scale tensor network contraction in Julia
+* 2024-11-26~2024-11-29 @ [Julia for numerical problems in quantum and solid-state physics](https://www.cecam.org/workshop-details/julia-for-numerical-problems-in-quantum-and-solid-state-physics-1355)
+  * Invited Talk: Tensor network based quantum simulation with Yao.jl
+* 2025-01-13~2025-01-17 @ ["100 Years of Matrix Mechanics" International Symposium](https://qlab.bimsa.cn/events/matrix/2025/)
+  * Invited Talk: Automated Discovery of Branching Rules with Optimal Complexity for the Maximum Independent Set Problem
