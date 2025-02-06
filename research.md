@@ -44,5 +44,7 @@ tags = ["publications", "paper", "research"]
   * Invited Talk: Large scale tensor network contraction in Julia
 * 2024-11-26~2024-11-29 @ [Julia for numerical problems in quantum and solid-state physics](https://www.cecam.org/workshop-details/julia-for-numerical-problems-in-quantum-and-solid-state-physics-1355)
   * Invited Talk: Tensor network based quantum simulation with Yao.jl
+* 2024-12-25 @ CompQu online seminar series
+  * Seminar talk: Gadget design - towards embedding computational hard problems to physical devices
 * 2025-01-13~2025-01-17 @ ["100 Years of Matrix Mechanics" International Symposium](https://qlab.bimsa.cn/events/matrix/2025/)
   * Invited Talk: Automated Discovery of Branching Rules with Optimal Complexity for the Maximum Independent Set Problem
