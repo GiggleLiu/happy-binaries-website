@@ -20,7 +20,7 @@ His current research interest includes finding appropriate formulations for hard
 ![Photo](/assets/avatars/yushengzhao.jpg)
 * [Home page](https://exaclior.github.io/)
 * Email: [yzhao053@connect.hkust-gz.edu.cn](mailto:yzhao053@connect.hkust-gz.edu.cn)
-* Tags: Polynomial Optimization, Semidefinite Programming, Quantum Information, Quantum Computing 
+* Tags: Polynomial Optimization, Semidefinite Program 
 
 #### Zhong-Yi Ni
 Zhongyi Ni(倪中一) received his dual B.Sc. degrees in Mathematics and Electronic Information Science from Fudan University. He joined Jin-Guo’s group as a Ph.D. student in 2023 and is currently working on scientific computing and quantum error correction. His contributions include maintaining and developing TensorQEC.jl. It is a Julia package that leverages tensor network methodologies to decode and simulate quantum error-correcting codes, enabling systematic analysis of their theoretical and practical properties. Through this work, Zhongyi seeks to advance the integration of foundational quantum information theory with robust computational tools for real-world applications.
@@ -29,9 +29,11 @@ Zhongyi Ni(倪中一) received his dual B.Sc. degrees in Mathematics and Electro
 * Tags: quantum error correction
 
 #### Qing-Yun Qian
+Qingyun Qian (钱青云) received his B.Sc. degree in Physics from Suzhou University of Science and Technology, where he worked on open quantum systems and memristor. He joined the Jin-Guo group as a Ph.D. student in 2023, focusing on quantum thermodynamics and quantum many-body physics. His research interests include quantum thermodynamics, Rydberg-based quantum computation and quantum many-body physics. He has contributed to the development of the Julia package PXPConstraint.jl, designed for simulating constraint pxp model dynamics. He also explores the utility of quantum many-body scars as quantum batteries, both analytically and numerically.Through his work, he aims to extend the theoretical boundaries of quantum thermodynamics and uncover new physical phenomena in many-body quantum systems from a thermodynamic perspective.
+
 ![Photo](/assets/avatars/qingyunqian.jpg)
-* Email: [qqian716@connect.hkust-gz.edu.cn](qqian716@connect.hkust-gz.edu.cn)
-* Tags: quantum information, quantum thermodynamics
+* Email: [qingyunq.physica@gmail.com](qingyunq.physica@gmail.com)
+* Tags: quantum thermodynamics, quantum many-body physics, quantum computation
 
 #### Yu-Qing Rong
 
