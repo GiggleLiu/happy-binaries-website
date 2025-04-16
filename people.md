@@ -70,10 +70,11 @@ Kaiwen Jin (靳开文) obtained B.Sc. degree in Mathematics from Nankai Universi
 * Tags: numerical algorithm, automatic differentiation 
 
 #### Huanhai Zhou
-Huanhai Zhou (周焕海) 
-![Photo](/assets/avatars/huanhaizhou.jpg)
-* Email: []()
-* Tags: 
+Huanhai Zhou (周唤海) received his B.Sc. degree in Software Engineering from Tsinghua University and M.Sc. degree in Physics from the Chinese University of Hong Kong. He joined Jin-Guo’s group as a Ph.D. student in 2024 and is currently working on computational many-body physics and quantum error correction. His research involves developing computational methods that leverage optimization tools and tensor network techniques to calculate physical quantities, drawing inspiration from bootstrapping approaches. He is also dedicated to implementing these methods in open-source software. Through his work, Huanhai aims to integrate advanced optimization techniques into computational quantum physics, providing numerically efficient methods along with rigorous certifications of accuracy for physical quantities and phenomena.
+
+![Photo](/assets/avatars/huanhaizhou.png)
+* Email: [albus.zhouhh@gmail.com](albus.zhouhh@gmail.com)
+* Tags: Quantum Many-Body Physics
 
 ## Research assistants
 
