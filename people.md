@@ -44,8 +44,8 @@ Yuqing-Rong received her B.S. in physics at Guangzhou University, where she work
 Longli Zheng(郑隆立) received his B.Sc. degrees in Physics at Shandong University. He joined Jin-Guo’s Group as a Ph.D. student in 2024 and is currently working on crystal material design and crystal structure prediction. His work includes 2D material generation through machine learning method, crystal and molecule structure search through ab initio calculation and mathematical optimization theory.
 
 ![Photo](/assets/avatars/longlizheng.png)
-* Email: [qqian716@connect.hkust-gz.edu.cn](qqian716@connect.hkust-gz.edu.cn)
-* Tags: quantum information, quantum thermodynamics
+* Email: [lzheng228@connect.hkust-gz.edu.cn](lzheng228@connect.hkust-gz.edu.cn)
+* Tags: materials science, machine learning 
 
 #### Xiaofeng Li
 LI Xiaofeng (李晓锋) is now pursuing a BEng degree in Artificial Intelligence at HKUST(GZ). He joined Jinguo's group as a research assistant in July 2024, through the opporunity of Undergraduate Research Program (UGRP) . His contributions focus on the development and maintenance of ProblemReductions.jl, a Julia package designed to enable reductions between computationally hard problems, such as Spin Glass and SAT. He aims to build a comprehensive reduction framework of well-known problems and offer unified interfaces for practitioners who want to explore the landscape of computational complexity.
@@ -68,10 +68,10 @@ Kaiwen Jin (靳开文) obtained B.Sc. degree in Mathematics from Nankai Universi
 * Tags: numerical algorithm, automatic differentiation 
 
 #### Huanhai Zhou
-Huanhai Zhou (周焕海) is a Ph.D. student in the Department of Physics at HKUST(GZ). He received his B.Sc. degree in Physics from Fudan University in 2023. His research interests include quantum information, quantum computing, and quantum thermodynamics.
+Huanhai Zhou (周焕海) 
 ![Photo](/assets/avatars/huanhaizhou.jpg)
-* Email: [kjing@connect.hkust-gz.edu.cn](kjing@connect.hkust-gz.edu.cn)
-* Tags: quantum computing, machine learning
+* Email: []()
+* Tags: 
 
 ## Research assistants
 
