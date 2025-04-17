@@ -20,13 +20,10 @@ rss_file variable in your config file if you want to use something different tha
   xmlns:georss="http://www.georss.org/georss">
 
   <channel>
-    <title>
-      <![CDATA[  {{fd2rss website_title}}  ]]>
-    </title>
-    <link> {{website_url}} </link>
-    <description>
-      <![CDATA[  {{fd2rss website_description}}  ]]>
-    </description>
+    <title><![CDATA[{{fd2rss website_title}}]]></title>
+    <link>{{website_url}}</link>
+    <description><![CDATA[{{fd2rss website_description}}]]></description>
+    <generator>Franklin.jl -- https://github.com/tlienart/Franklin.jl</generator>
     <atom:link
       href="{{fd_rss_feed_url}}"
       rel="self"
