@@ -1,16 +1,48 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class=h-100>
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{if hasmath}} {{insert head_katex.html }}     {{end}}
-    {{if hascode}} {{insert head_highlight.html }}   {{end}}
-    {{insert style.html}}
-    {{isdef title}} <title>{{fill title}}</title>  {{end}}
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta content="index, follow" name=robots>
+  <link rel="icon" href="/assets/logo_crop.png">
+  <link rel="alternate" type="application/rss+xml" href="/post/index.xml" title="RSS Feed for JuliaGPU">
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  {{if hasmath}} {{insert head_katex.html }}     {{end}}
+  {{if hascode}} {{insert head_highlight.html }} {{end}}
+
+  {{insert style_adjustments.html}}
+
+  {{ispage index.html}}
+    <title>Quantum Bay</title>
+  {{end}}
+  {{isnotpage index.html}}
+    <title>{{title}} ⋅ Quantum Bay</title>
+  {{end}}
 </head>
+<body class="d-flex flex-column h-100">
+  {{insert header.html}}
 
-<body>
-{{insert nav.html}}
+  <div class="container">
+    <main id=main>
 
+    {{ispage post/*}}{{isnotpage post/index.html}}
+      <!-- make sure to generate a Hugo-era URI at the root, redirecting to /post/.... -->
+      {{postredirect}}
 
+      <h1>{{title}}</h1>
+      {{post_date}}
+      <br><br>
+    {{end}}{{end}}
 <!-- Content appended here -->
+ <!doctype html>
+<!-- first few lines ... -->
+  <script src="/libs/lunr/lunr.min.js"></script>
+  <script src="/libs/lunr/lunr_index.js"></script>
+  <script src="/libs/lunr/lunrclient.min.js"></script>
+</head>
+<!-- ... -->
+<form id="lunrSearchForm" name="lunrSearchForm" style="text-align:center; margin-bottom:20px;">
+  <input class="search-input" name="q" placeholder="Enter search term" type="text">
+  <input type="submit" value="Search" formaction="/search/index.html">
+</form>
