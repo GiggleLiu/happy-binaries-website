@@ -1,5 +1,5 @@
 +++
-title = "Research"
+title = "research"
 tags = ["publications", "paper", "research"]
 +++
 

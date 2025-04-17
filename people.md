@@ -1,5 +1,5 @@
 +++
-title = "People"
+title = "people"
 tags = ["people", "students", "members"]
 +++
 
