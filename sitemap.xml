@@ -2,13 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-    <loc>www.jinguo-group.science/research/index.html</loc>
-    <lastmod>2025-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>www.jinguo-group.science/teaching/index.html</loc>
+    <loc>www.jinguo-group.science/workflow/index.html</loc>
     <lastmod>2025-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -20,7 +14,13 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>www.jinguo-group.science/people/index.html</loc>
+    <loc>www.jinguo-group.science/index.html</loc>
+    <lastmod>2025-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>www.jinguo-group.science/training/index.html</loc>
     <lastmod>2025-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -38,25 +38,7 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>www.jinguo-group.science/workflow/index.html</loc>
-    <lastmod>2025-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
     <loc>www.jinguo-group.science/Research/index.html</loc>
-    <lastmod>2025-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>www.jinguo-group.science/index.html</loc>
-    <lastmod>2025-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>www.jinguo-group.science/training/index.html</loc>
     <lastmod>2025-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
