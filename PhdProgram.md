@@ -10,10 +10,10 @@ The Assistant Professor Liu Jinguo's research group at [the Hong Kong University
 ## Team Introduction
 **Liu Jinguo (main supervisor)** is an assistant professor at the Advanced Materials Domain (AMAT) and Quantum Science and Technology Center (QST) established by the Hong Kong University of Science and Technology (Guangzhou). He obtained his Ph.D. from Nanjing University in 2017 and did postdoctoral work at the Institute of Physics, Chinese Academy of Sciences, and Harvard University. His main interests include simulating the physical world using numerical calculations and thinking about the nature of computation from a physics perspective. Liu Jinguo is active in the open-source scientific computing software community and is one of the main authors of the quantum simulator [Yao.jl](https://link.zhihu.com/?target=https%3A//github.com/QuantumBFS/Yao.jl). He has also mentored Google Summer of Code (GSoC) projects. His current main interest is using numerical techniques to simulate neutral atomic systems and designing quantum algorithms suitable for operation on neutral atomic systems.
 
-- Github: https://github.com/GiggleLiu 
-- Google scholar: https://scholar.google.com/citations?user=4edw228AAAAJ&hl=en 
-- University home page: https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page?id=2498 
-- Team page: https://www.jinguo-group.science/
+- Github: [https://github.com/GiggleLiu](https://github.com/GiggleLiu) 
+- Google scholar: [https://scholar.google.com/citations?user=4edw228AAAAJ&hl=en](https://scholar.google.com/citations?user=4edw228AAAAJ&hl=en) 
+- University home page: [https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page?id=2498](https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page?id=2498) 
+- Team page: [https://www.jinguo-group.science/](https://www.jinguo-group.science/)
 - Personal website: [GiggleLiu](https://giggleliu.github.io/)
 
 **Dai Xi (co-supervisor)** is a professor in the Department of Physics at the Hong Kong University of Science and Technology (Clear Water Bay) and the Deputy Director of the Beijing National Laboratory for Condensed Matter Physics. His main research interests include first-principles calculations of strongly correlated systems and the theory of topological insulators. His paper has been cited more than 60,000 times on Google Scholar. He and his collaborators discovered the most important topological insulator material system to date - the Bi2Se3 family by 2018, and proposed a low-energy effective model that accurately describes the topological electronic structure of this material system.

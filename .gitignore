@@ -11,3 +11,4 @@ package.json
 __site/
 *.swp
 Manifest.toml
+.vscode/

@@ -3,10 +3,17 @@ title = "Research"
 tags = ["publications", "paper", "research"]
 +++
 
+## Publications
 
-# Research
-## Google Scholars
-* [Jin-Guo Liu](https://scholar.google.com/citations?user=4edw228AAAAJ)
+- **Automated Discovery of Branching Rules with Optimal Complexity for the Maximum Independent Set Problem.** Gao, X.-Z., Wang, Y.-J., Zhang, P., Liu, J.-G., 2024. [https://doi.org/10.48550/arXiv.2412.07685](https://doi.org/10.48550/arXiv.2412.07685)
+- **Dynamic Hologram Generation with Automatic Differentiation.** Zhang, X.-Y., Wang, Y.-Q., Du, A., Wang, H., Wang, L., Liu, J., 2025. [https://doi.org/10.48550/arXiv.2503.03714](https://doi.org/10.48550/arXiv.2503.03714)
+- **Universal quantum computing with a single arbitrary gate.** Ni, Z.-Y., Zhao, Y.-S., Liu, J.-G., 2024. [https://doi.org/10.48550/arXiv.2409.20025](https://doi.org/10.48550/arXiv.2409.20025)
+- **Probabilistic Inference in the Era of Tensor Networks and Differential Programming.** Roa-Villescas, M., Gao, X., Stuijk, S., Corporaal, H., Liu, J.-G., 2024. Phys. Rev. Research 6, 033261. [https://doi.org/10.1103/PhysRevResearch.6.033261](https://doi.org/10.1103/PhysRevResearch.6.033261)
+- **Programming guide for solving constraint satisfaction problems with tensor networks.** Gao, X., Li, X., Liu, J., 2024. [https://doi.org/10.48550/arXiv.2501.00227](https://doi.org/10.48550/arXiv.2501.00227)
+- **Quantum Optimization with Arbitrary Connectivity Using Rydberg Atom Arrays.** Nguyen, M.-T., Liu, J.-G., Wurtz, J., Lukin, M.D., Wang, S.-T., Pichler, H., 2023. PRX Quantum 4, 010316. [https://doi.org/10.1103/PRXQuantum.4.010316](https://doi.org/10.1103/PRXQuantum.4.010316)
+- **Computing Solution Space Properties of Combinatorial Optimization Problems Via Generic Tensor Networks.** Liu, J.-G., Gao, X., Cain, M., Lukin, M.D., Wang, S.-T., 2023. SIAM J. Sci. Comput. 45, A1239–A1270. [https://doi.org/10.1137/22M1501787](https://doi.org/10.1137/22M1501787)
+
+
 
 ## Talks
 * 2023-08-20~2023-08-25 @ [10th International Congress on Industrial and Applied Mathematics](https://iciam2023.org/)

@@ -3,15 +3,6 @@ title = "People"
 tags = ["people", "students", "members"]
 +++
 
-# People
-## Faculty
-#### Jin-Guo Liu
-![Photo](/assets/avatars/jinguoliu.png)
-* [Home page](https://giggleliu.github.io/)
-* Email: [jinguoliu@hkust-gz.edu.cn](mailto:jinguoliu@hkust-gz.edu.cn)
-* Tags: quantum information, computational complexity
-
-## Students
 #### Yu-Sheng Zhao
 Yusheng Zhao is currently a PhD candidate advised by Prof. Jin-Guo Liu. Prior to his doctoral studies, Yusheng Zhao obtained a B.A. in Physics and Computer Science from New York University, followed by an M.A. in Physics from Stony Brook University. During his Master's, he worked under the supervision of Prof. Tzu-Chieh Wei, focusing on Quantum Error Mitigation.
 
@@ -26,6 +17,7 @@ His current research interest includes finding appropriate formulations for hard
 
 #### Zhong-Yi Ni
 Zhongyi Ni(倪中一) received his dual B.Sc. degrees in Mathematics and Electronic Information Science from Fudan University. He joined Jin-Guo’s group as a Ph.D. student in 2023 and is currently working on scientific computing and quantum error correction. His contributions include maintaining and developing TensorQEC.jl. It is a Julia package that leverages tensor network methodologies to decode and simulate quantum error-correcting codes, enabling systematic analysis of their theoretical and practical properties. Through this work, Zhongyi seeks to advance the integration of foundational quantum information theory with robust computational tools for real-world applications.
+
 ~~~
 <img src="/assets/avatars/zhongyini.jpg" alt="Zhong-Yi Ni" style="width: 200px;">
 ~~~

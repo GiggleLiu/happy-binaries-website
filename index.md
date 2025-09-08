@@ -2,7 +2,7 @@
 @def tags = ["index", "group", "Jinguo Liu"]
 
 # Jin-Guo Liu's Group
-We embed computational hard problems into a quantum device, to understand the nature of computation.
+(Computation $\cap$ Physics $\cap$ Coding) \ Boring study
 
 ## Contact
 ~~~
