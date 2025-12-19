@@ -4,7 +4,201 @@
      background: 0 0
  }
 .container {
-   max-width: 700px
+   max-width: 760px
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+}
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+.hero-section h1 {
+    font-size: 2.8rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    position: relative;
+}
+.hero-section .tagline {
+    font-size: 1.2rem;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    position: relative;
+}
+.hero-section .hero-links {
+    position: relative;
+}
+.hero-section .hero-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 25px;
+    margin: 0 0.3rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+.hero-section .hero-links a:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.5);
+}
+
+/* Member Cards */
+.member-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.member-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+.member-card img {
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border: 3px solid #e8e8e8;
+    flex-shrink: 0;
+}
+.member-card .member-info {
+    flex: 1;
+}
+.member-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: #1a1a2e;
+    font-size: 1.25rem;
+}
+.member-card p {
+    margin: 0 0 0.75rem 0;
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+.member-card .member-links {
+    margin-bottom: 0.75rem;
+}
+.member-card .member-links a {
+    color: #0066cc;
+    margin-right: 1rem;
+    font-size: 0.9rem;
+}
+.member-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+.member-tag {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    color: #1565c0;
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.5rem;
+    color: #1a1a2e;
+    margin: 2rem 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #0f3460;
+    display: inline-block;
+}
+
+/* Publication List */
+.pub-year {
+    font-size: 1.3rem;
+    color: #0f3460;
+    margin: 1.5rem 0 1rem 0;
+    font-weight: 600;
+}
+.pub-item {
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid #0f3460;
+    background: #f8f9fa;
+    border-radius: 0 8px 8px 0;
+}
+.pub-item strong {
+    color: #1a1a2e;
+}
+.pub-item a {
+    color: #0066cc;
+}
+
+/* Group Photo */
+.group-photo-container {
+    text-align: center;
+    margin: 2.5rem 0;
+}
+.group-photo-container img {
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+.group-photo-container figcaption {
+    color: #666;
+    margin-top: 0.75rem;
+    font-style: italic;
+}
+
+/* Info Cards */
+.info-card {
+    background: linear-gradient(135deg, #f0f4f8 0%, #fff 100%);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+.info-card h3 {
+    margin-top: 0;
+    color: #0f3460;
+}
+
+/* Live Coding Banner */
+.live-coding-banner {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.live-coding-banner .icon {
+    font-size: 2rem;
+}
+.live-coding-banner a {
+    color: white;
+    text-decoration: underline;
 }
 
 #nav-border {
