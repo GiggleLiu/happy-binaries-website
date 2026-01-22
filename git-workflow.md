@@ -55,13 +55,23 @@ Without guardrails, AI-generated code could silently break your project.
 
 ## The New Reality
 
-| Before LLMs | After LLMs |
-| --- | --- |
-| "I wrote it, I trust it" | "AI wrote it, I must verify it" |
-| Code review = optional for solo devs | Code review = essential (you review AI) |
-| CI/CD = nice to have | CI/CD = critical safety net |
-| Branches = for teams | Branches = for isolating AI experiments |
-| "Move fast, break things" | "Move fast, but guard against AI mistakes" |
+~~~
+<table style="width: 100%; border-collapse: collapse; margin: 1.5em 0;">
+  <thead>
+    <tr style="background: #f5f5f5;">
+      <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Before LLMs</th>
+      <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">After LLMs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;">"I wrote it, I trust it"</td><td style="padding: 10px; border-bottom: 1px solid #eee;">"AI wrote it, I must verify it"</td></tr>
+    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;">Code review = optional for solo devs</td><td style="padding: 10px; border-bottom: 1px solid #eee;">Code review = essential (you review AI)</td></tr>
+    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;">CI/CD = nice to have</td><td style="padding: 10px; border-bottom: 1px solid #eee;">CI/CD = critical safety net</td></tr>
+    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;">Branches = for teams</td><td style="padding: 10px; border-bottom: 1px solid #eee;">Branches = for isolating AI experiments</td></tr>
+    <tr><td style="padding: 10px;">"Move fast, break things"</td><td style="padding: 10px;">"Move fast, but guard against AI mistakes"</td></tr>
+  </tbody>
+</table>
+~~~
 
 The Git workflow once considered "overkill" for solo projects is now **essential**. So how do we allow AI to work efficiently while maintaining control? We need a systematic solution.
 
@@ -85,14 +95,25 @@ If problems are found, the workflow forms a feedback loop: AI fixes the code unt
 
 Each component catches different types of errors:
 
-| Component | What It Catches | Why It Matters for AI |
-| --- | --- | --- |
-| **Issue** | Unclear requirements | AI needs clear specs to generate correct code |
-| **Branch** | Damage to working code | Isolates AI's potential errors before verification |
-| **Pull Request** | Unreviewed changes | Creates mandatory discussion point before merge |
-| **CI/CD** | Syntax errors, test failures | Automatically catches AI "hallucinations" |
-| **Review** | Logic errors, style violations | Human catches what automation misses |
-| **Merge** | Unapproved changes | Nothing reaches production without human consent |
+~~~
+<table style="width: 100%; border-collapse: collapse; margin: 1.5em 0;">
+  <thead>
+    <tr style="background: #f5f5f5;">
+      <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Component</th>
+      <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">What It Catches</th>
+      <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Why It Matters for AI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Issue</strong></td><td style="padding: 10px; border-bottom: 1px solid #eee;">Unclear requirements</td><td style="padding: 10px; border-bottom: 1px solid #eee;">AI needs clear specs to generate correct code</td></tr>
+    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Branch</strong></td><td style="padding: 10px; border-bottom: 1px solid #eee;">Damage to working code</td><td style="padding: 10px; border-bottom: 1px solid #eee;">Isolates AI's potential errors before verification</td></tr>
+    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Pull Request</strong></td><td style="padding: 10px; border-bottom: 1px solid #eee;">Unreviewed changes</td><td style="padding: 10px; border-bottom: 1px solid #eee;">Creates mandatory discussion point before merge</td></tr>
+    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>CI/CD</strong></td><td style="padding: 10px; border-bottom: 1px solid #eee;">Syntax errors, test failures</td><td style="padding: 10px; border-bottom: 1px solid #eee;">Automatically catches AI "hallucinations"</td></tr>
+    <tr><td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Review</strong></td><td style="padding: 10px; border-bottom: 1px solid #eee;">Logic errors, style violations</td><td style="padding: 10px; border-bottom: 1px solid #eee;">Human catches what automation misses</td></tr>
+    <tr><td style="padding: 10px;"><strong>Merge</strong></td><td style="padding: 10px;">Unapproved changes</td><td style="padding: 10px;">Nothing reaches production without human consent</td></tr>
+  </tbody>
+</table>
+~~~
 
 ### Anti-Pattern vs. Best Practice
 
@@ -106,7 +127,10 @@ Each component catches different types of errors:
 
 Let's demonstrate the complete workflow using [Issue #11](https://github.com/nzy1997/ILPQEC/issues/11) from the ILPQEC project (an integer linear programming quantum error correction package), resolved by [PR #13](https://github.com/nzy1997/ILPQEC/pull/13).
 
-> **Prerequisites**: Install Git and GitHub CLI (`gh`). You can prompt AI to execute: `prompt> Install git and gh on my system, authenticate gh with my GitHub account`
+> **Prerequisites**: Install Git and GitHub CLI (`gh`). You can prompt AI to execute:
+   ```text
+   prompt> Install git and gh on my system, authenticate gh with my GitHub account
+   ```
 
 ---
 
