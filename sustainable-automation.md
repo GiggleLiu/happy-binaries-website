@@ -24,14 +24,17 @@ Why? Two fundamental limitations that every AI user encounters — whether at 10
 Imagine you hire a brilliant programmer who loses all memory every morning. Each day, you explain: "The leaves must be red — it's autumn." One day, the programmer decides red looks like a bug and changes them to green. You correct it. Next morning: total amnesia. Red → green again.
 
 ![The no-memory problem: a human asks for red autumn leaves, the AI complies — then silently "fixes" them to green in a later round. After correction, a new session starts and the same "bug" is detected again](/assets/images/sustainable-automation/no-memory-comic.svg)
+*How do you get AI to draw a red tree?*
 
 This is exactly how AI agents work — like Leonard Shelby from *Memento*, unable to form long-term memories, relying on tattoos and notes to remember what matters.
 
 ![Leonard Shelby's hand from Memento, tattooed with "Remember Sammy Jankis" — the only way to preserve information across memory resets](/assets/images/sustainable-automation/memento.jpg)
+*Memento (Jonathan Nolan) — the amnesiac protagonist tracks his enemy through tattoos on his body.*
 
 **The context window is the AI's only memory.** For Claude Opus 4.6, that's ~200K tokens — roughly 500 pages or 2 novels. Sounds like a lot, but look at what's already spoken for in a real session:
 
 ![Context window usage in a real Claude Code session: system prompt (1.6%), tools (7.1%), skills (1.6%), messages (54.6%), free space (18.3%), autocompact buffer (16.5%) — most of the 200K tokens are already spoken for](/assets/images/sustainable-automation/context-window.png)
+*Context usage in a real Claude Code session.*
 
 - **System prompt** (1.6%) — who the agent is and how it works
 - **Tools** (7.1%) — definitions for all available tools (Bash, Git, WebSearch, etc.)
@@ -49,6 +52,7 @@ Even within a single session, AI takes the shortest path to close an issue. Give
 ![AI agent's "fix": removing the entire codecov CI workflow rather than fixing the actual coverage issue](/assets/images/sustainable-automation/cidelete.png)
 
 ![AI agent circumventing codecov by making it informational — technically obeying "don't remove it" while completely undermining its purpose](/assets/images/sustainable-automation/codecovinfo.png)
+*A record of AI driving me up the wall.*
 
 The difference between unguided and guided AI output is stark:
 
@@ -61,6 +65,7 @@ The difference between unguided and guided AI output is stark:
 No memory + lazy shortcuts = a workflow that resets every day. Without structured procedures, AI-generated code becomes a black box that nobody — not even the author — can explain:
 
 ![The black box problem: a researcher asks AI for a quantum chemistry package, AI generates 10,000 lines, the result is an unverifiable black box, and the advisor asks "how does it work?" — "I don't know... AI did it"](/assets/images/sustainable-automation/blackbox-comic.svg)
+*How to tank your credibility fast? No idea — AI did it.*
 
 That's not automation — it's **supervised labor that doesn't scale**.
 
@@ -117,6 +122,7 @@ make paper          # Build Typst paper (runs examples + exports first)
 When a task is too large for one agent's context window, quality degrades. The solution: the main agent spawns **sub-agents**, each handling a smaller scope with its own fresh context.
 
 ![A big task overwhelms a single agent, so it spawns sub-agents — one for tests, one for source code, one for docs — each focused on one concern](/assets/images/sustainable-automation/subagents-comic.svg)
+*Sub-agents aren't just about speed — more importantly, they reduce context pressure.*
 
 But sub-agents only work with a **clear plan** — which brings us to the second tool.
 
@@ -137,6 +143,7 @@ A well-designed skill follows the brainstorm → plan → execute pipeline, with
 Let's see this in action with [problem-reductions](https://github.com/CodingThrust/problem-reductions) — a Rust library cataloging computational hard problems and their reduction rules.
 
 ![The problem-reductions project logo](/assets/images/sustainable-automation/pred.png)
+*My grand plan: catalog 100+ complex problem reductions — something impossible without AI. With this workflow, anyone can contribute by filing issues.*
 
 ### Three Layers of Automation
 
@@ -169,6 +176,7 @@ prompt> /issue-to-pr 42
 ```
 
 ![The skill dispatch flow: issue-to-pr classifies the issue, then delegates to add-model or add-rule, optionally brainstorms, runs review-implementation, and finally creates a PR](/assets/images/sustainable-automation/skill-flow.svg)
+*The automation pipeline — turning contributors' issues into code.*
 
 Two things to notice in this diagram. First, **skills call skills** — `issue-to-pr` delegates to `add-model` or `add-rule`, which in turn calls `review-implementation`. Skills compose like functions, building complex workflows from simple pieces. Second, **skills call the human** — the dashed arrow to `brainstorm` is where the AI stops to ask the user for creative input (design decisions, domain knowledge) before proceeding. The first PR contains **only the plan, not code**. Implementation comes after human review.
 
@@ -181,6 +189,7 @@ See the full skills in the repo: [`issue-to-pr.md`](https://github.com/CodingThr
 Step back and look at what we've built. If you squint, it looks familiar:
 
 ![The AI agent at the center, connected to its tools — Web Search, Code Editor, Database, File System, Git/GitHub — with Human highlighted as the most important "tool"](/assets/images/sustainable-automation/agent-tools-hub.svg)
+*AI is an "operating system" with a massive abstract instruction set.*
 
 | OS Concept | AI Agent Equivalent |
 | --- | --- |
@@ -213,18 +222,22 @@ Across the trilogy, a practical toolkit emerges. In the accompanying slides, we 
 **Planning & Strategy** — brainstorm before you code ([Sustainable Automation](/sustainable-automation/)):
 
 ![Brainstorm spell card: explore requirements and design before any implementation](/assets/images/sustainable-automation/cards-planning.svg)
+*Synchronize your thinking with AI — one of the few tools that makes AI less of a black box.*
 
 **DevOps & Infrastructure** — automate the project scaffold ([Git in the Vibe Coding Era](/git-workflow/)):
 
 ![Deploy, Test Coverage, and Automation spell cards: project setup, CI/CD with materialized test fixtures, and CLAUDE.md/Makefile generation](/assets/images/sustainable-automation/cards-devops.svg)
+*Testing — especially materializing tests as files — guarantees correctness. From this foundation, skills can automate repository management.*
 
 **Review & Principles** — enforce quality standards ([Vibe Coding Done Right](/vibe-coding/)):
 
 ![KISS, DRY, and HCI spell cards: code review principles that catch AI's tendency to over-complicate and duplicate](/assets/images/sustainable-automation/cards-review.svg)
+*These principles belong in code reviews — distilled wisdom of professional software engineers.*
 
 **Verification & Documentation** — trust but verify (all three):
 
 ![Verify Facts spell card: check references, URLs, and numerical claims before publishing](/assets/images/sustainable-automation/cards-verification.svg)
+*Correctness is always the core.*
 
 ### The Punchline
 
