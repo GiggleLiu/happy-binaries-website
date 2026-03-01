@@ -289,6 +289,29 @@ li p {
    margin: 0
 }
 
+/* Figure captions: img followed by em in a paragraph */
+.franklin-content p > img {
+    display: block;
+    margin: 1.5rem auto 0.25rem;
+}
+
+.franklin-content p > img + em {
+    display: block;
+    text-align: center;
+    color: #666;
+    font-size: 0.9em;
+    font-style: italic;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Table layout: left-align text */
+.franklin-content table th,
+.franklin-content table td {
+    text-align: left !important;
+    padding: 0.5rem 0.75rem;
+}
+
 .result-title a { text-decoration: none; }
 .result-title a:hover { text-decoration: underline; }
 .result-preview { color: #808080; }
