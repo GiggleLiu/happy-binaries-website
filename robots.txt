@@ -1,4 +1,4 @@
-Sitemap: www.jinguo-group.science/sitemap.xml
+Sitemap: https://www.jinguo-group.science/sitemap.xml
 
 User-agent: *
 Disallow:
