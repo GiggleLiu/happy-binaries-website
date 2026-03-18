@@ -20,7 +20,7 @@ generate_rss = true
 website_title = "Jin-Guo Liu Group"
 website_descr = "Jin-Guo Liu Group Website"
 prepath = get(ENV, "PREVIEW_FRANKLIN_PREPATH", "") # In the third argument put the prepath you normally use
-website_url = get(ENV, "PREVIEW_FRANKLIN_WEBSITE_URL", "www.jinguo-group.science") # Just put the website name
+website_url = get(ENV, "PREVIEW_FRANKLIN_WEBSITE_URL", "https://www.jinguo-group.science") # Just put the website name
 +++
 
 <!--
