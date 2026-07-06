@@ -1,0 +1,25 @@
+---
+import { postUrl } from '../lib/blog';
+import type { CollectionEntry } from 'astro:content';
+interface Props { posts: CollectionEntry<'blog'>[]; }
+const { posts } = Astro.props;
+---
+<ul class="postlist">
+  {posts.map((p) => (
+    <li>
+      <span class="meta">{p.data.date.toISOString().slice(0, 10)}</span>
+      <div>
+        <a href={postUrl(p)}>{p.data.title}</a>
+        <p class="meta">{p.data.description}</p>
+        <span>{p.data.tags.map((t) => <a class="tag" href={`/blog/tags/${encodeURIComponent(t)}/`}>{t}</a>)}</span>
+      </div>
+    </li>
+  ))}
+</ul>
+<style>
+  .postlist { list-style: none; padding: 0; margin: 0; }
+  .postlist li { display: flex; gap: 1.2rem; padding: 0.9rem 0;
+                 border-bottom: 1px dashed var(--border); }
+  .postlist li > span.meta { flex-shrink: 0; padding-top: 0.15rem; }
+  .postlist p { margin: 0.2rem 0 0.4rem; }
+</style>
