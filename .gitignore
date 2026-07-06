@@ -7,8 +7,11 @@ _site
 Gemfile
 Gemfile.lock
 node_modules
-package.json
 __site/
 *.swp
 Manifest.toml
 .vscode/
+.superpowers/
+node_modules/
+dist/
+.astro/
