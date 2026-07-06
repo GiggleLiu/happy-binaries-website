@@ -1,0 +1,24 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+interface Props { title: string; description?: string; }
+const { title, description = 'Jin-Guo Liu research group at HKUST(Guangzhou): quantum computation, tensor networks, and open-source scientific computing.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/assets/favicon.png" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="alternate" type="application/rss+xml" title="Jin-Guo Liu Group" href="/feed.xml" />
+  </head>
+  <body>
+    <Nav />
+    <main><slot /></main>
+    <Footer />
+  </body>
+</html>

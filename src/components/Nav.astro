@@ -1,0 +1,36 @@
+---
+const items = [
+  { href: '/research/', label: 'research' },
+  { href: '/people/', label: 'people' },
+  { href: '/blog/', label: 'blog' },
+  { href: '/join/', label: 'join' },
+  { href: '/about/', label: 'about' },
+];
+const { pathname } = Astro.url;
+---
+<header>
+  <nav>
+    <a class="logo" href="/">~/jinguo-group</a>
+    <ul>
+      {items.map((it) => (
+        <li><a href={it.href} aria-current={pathname.startsWith(it.href) ? 'page' : undefined}>
+          {it.label}</a></li>
+      ))}
+      <li><a href="https://scholar.google.com/citations?user=4edw228AAAAJ">publications ↗</a></li>
+    </ul>
+  </nav>
+</header>
+<style>
+  header { border-bottom: 1px solid var(--border); }
+  nav { max-width: var(--wide); margin: 0 auto; padding: 0.9rem 1.25rem;
+        display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: baseline;
+        font-family: var(--font-mono); font-size: 0.95rem; }
+  .logo { color: var(--text); font-weight: 700; }
+  .logo::before { content: '$ '; color: var(--accent); }
+  ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.1rem; list-style: none;
+       margin: 0; padding: 0; }
+  a { color: var(--muted); }
+  a[aria-current='page'] { color: var(--accent); }
+  a[aria-current='page']::before { content: '['; }
+  a[aria-current='page']::after { content: ']'; }
+</style>

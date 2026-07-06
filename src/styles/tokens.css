@@ -1,0 +1,27 @@
+/* The entire design system. Terminal aesthetic: dark, mono chrome, phosphor accent. */
+:root {
+  /* palette */
+  --bg: #0d1117;
+  --bg-raised: #161b22;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --border: #30363d;
+  --accent: #7ee787;        /* phosphor green — links, prompts, highlights */
+  --accent-dim: #2ea043;    /* hover/borders of accent elements */
+  /* Julia dot colors — tag accents only, use sparingly */
+  --julia-purple: #9558b2;
+  --julia-green: #389826;
+  --julia-red: #cb3c33;
+  --julia-blue: #4063d8;
+  /* type */
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans',
+               'PingFang SC', 'Microsoft YaHei', sans-serif;
+  /* layout */
+  --measure: 44rem;         /* reading width */
+  --wide: 62rem;            /* page width */
+}
+@media print {
+  :root { --bg: #ffffff; --bg-raised: #f6f8fa; --text: #1f2328;
+          --muted: #57606a; --border: #d0d7de; --accent: #1a7f37; --accent-dim: #1a7f37; }
+}
