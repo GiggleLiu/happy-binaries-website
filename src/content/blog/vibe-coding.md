@@ -1,9 +1,9 @@
-+++
-title = "Vibe Coding Done Right"
-tags = ["blog", "ai", "testing", "software-engineering"]
-+++
-
-# Vibe Coding Done Right
+---
+title: "Vibe Coding Done Right"
+description: "A systematic approach to AI-assisted coding through test-driven development, drawing parallels with quantum error correction."
+date: 2026-01-10
+tags: [ai, testing, software-engineering]
+---
 
 ## What is Vibe Coding?
 

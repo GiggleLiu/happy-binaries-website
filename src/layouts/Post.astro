@@ -1,0 +1,36 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from './Base.astro';
+import { getCollection, render } from 'astro:content';
+import { postUrl } from '../lib/blog';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props { entry: CollectionEntry<'blog'>; }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const all = await getCollection('blog');
+const translation =
+  entry.data.lang === 'en'
+    ? all.find((e) => e.data.translationOf === entry.id)
+    : all.find((e) => e.id === entry.data.translationOf);
+const dateStr = entry.data.date.toISOString().slice(0, 10);
+---
+<Base title={`${entry.data.title} — Jin-Guo Liu Group`} description={entry.data.description}>
+  <article lang={entry.data.lang}>
+    <p class="crumb"><a href="/blog/">~/blog</a>/{entry.data.lang === 'zh' ? entry.data.translationOf + '/zh' : entry.id}</p>
+    <h1>{entry.data.title}</h1>
+    <p class="meta">
+      {dateStr}
+      {entry.data.tags.map((t) => <span class="tag">{t}</span>)}
+      {translation && <> · <a href={postUrl(translation)}>{entry.data.lang === 'en' ? '中文版' : 'English'}</a></>}
+    </p>
+    <div class="prose"><Content /></div>
+  </article>
+</Base>
+<style>
+  article { max-width: var(--measure); margin: 0 auto; }
+  .prose :global(img) { border: 1px solid var(--border); border-radius: 6px;
+                        background: #fff; }
+  .prose :global(h2) { border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+</style>

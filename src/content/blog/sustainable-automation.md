@@ -1,9 +1,9 @@
-+++
-title = "Sustainable Automation: Programming the Programmer"
-tags = ["blog", "ai", "skills", "claude", "software-engineering"]
-+++
-
-# Sustainable Automation: Programming the Programmer
+---
+title: "Sustainable Automation: Programming the Programmer"
+description: "Teaching AI to remember and follow procedures — with CLAUDE.md and Skills. The third in a trilogy on human-AI collaboration."
+date: 2026-02-27
+tags: [ai, agents, automation]
+---
 
 *Teaching AI to remember and follow procedures — with CLAUDE.md and Skills*
 

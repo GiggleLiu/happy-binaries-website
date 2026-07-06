@@ -1,9 +1,9 @@
-+++
-title = "The Necessity of Git in the Vibe Coding Era"
-tags = ["blog", "ai", "git", "workflow", "software-engineering"]
-+++
-
-# The Necessity of Git in the Vibe Coding Era
+---
+title: "The Necessity of Git in the Vibe Coding Era"
+description: "A practical Git workflow guide for human-AI collaboration, explaining why Git is essential for vibe coding."
+date: 2026-01-23
+tags: [ai, git, software-engineering]
+---
 
 *A practical Git workflow guide for human-AI collaboration, aimed at researchers*
 
