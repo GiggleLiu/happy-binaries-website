@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The Necessity of Git in the Vibe Coding Era — Jin-Guo Liu Group</title><meta name="description" content="A practical Git workflow guide for human-AI collaboration, explaining why Git is essential for vibe coding."><link rel="icon" href="/assets/favicon.png"><link rel="canonical" href="https://www.jinguo-group.science/blog/git-workflow/"><link rel="alternate" type="application/rss+xml" title="Jin-Guo Liu Group" href="/feed.xml"><link rel="stylesheet" href="/_astro/_slug_.zNbKmI-4.css">
+<link rel="stylesheet" href="/_astro/_slug_.C6WtIVDV.css"></head> <body> <header data-astro-cid-dmqpwcec> <nav data-astro-cid-dmqpwcec> <a class="logo" href="/" data-astro-cid-dmqpwcec>Jin-Guo Liu Group</a> <ul data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec><a href="/research/" data-astro-cid-dmqpwcec> Research</a></li><li data-astro-cid-dmqpwcec><a href="/people/" data-astro-cid-dmqpwcec> People</a></li><li data-astro-cid-dmqpwcec><a href="/blog/" aria-current="page" data-astro-cid-dmqpwcec> Blog</a></li><li data-astro-cid-dmqpwcec><a href="/join/" data-astro-cid-dmqpwcec> Join Us</a></li><li data-astro-cid-dmqpwcec><a href="/about/" data-astro-cid-dmqpwcec> About</a></li> <li data-astro-cid-dmqpwcec><a href="https://scholar.google.com/citations?user=4edw228AAAAJ" data-astro-cid-dmqpwcec>Publications ↗</a></li> </ul> </nav> </header>  <main> <article lang="en" data-astro-cid-gvpn4u4b> <p class="meta" data-astro-cid-gvpn4u4b><a href="/blog/" data-astro-cid-gvpn4u4b>← Blog</a></p> <h1 data-astro-cid-gvpn4u4b>The Necessity of Git in the Vibe Coding Era</h1> <p class="meta" data-astro-cid-gvpn4u4b> 2026-01-23 <span class="tag" data-astro-cid-gvpn4u4b>ai</span><span class="tag" data-astro-cid-gvpn4u4b>git</span><span class="tag" data-astro-cid-gvpn4u4b>software-engineering</span>  </p> <div class="prose" data-astro-cid-gvpn4u4b><p><em>A practical Git workflow guide for human-AI collaboration, aimed at researchers</em></p>
+<p>This article is primarily for researchers who are not yet proficient in using Git and GitHub to manage code, explaining why these two tools are essential for vibe coding. For simplicity, this article will not distinguish between Git and the GitHub website, using “Git” to refer to both.</p>
+<hr>
+<h2 id="introduction-the-trust-crisis-in-ai-generated-code">Introduction: The Trust Crisis in AI-Generated Code</h2>
+<p>When you ask AI to write code, a fundamental problem arises: <strong>How do you know the code actually works?</strong> AI can generate thousands of lines of plausible-looking code in seconds, but “plausible” doesn’t mean “correct.” Without a systematic approach, AI-assisted coding quickly devolves into a trust crisis, leaving you drowning in untested, unreliable code.</p>
+<p>In a <a href="/vibe-coding/">previous blog post</a>, we explored how test-driven development solves the correctness problem—using tests as “syndromes” to verify AI-generated code.</p>
+<p>But testing alone isn’t enough—especially for scientists accustomed to writing research code independently. When AI becomes your coding partner, you need a workflow that ensures safety, supports planning, and enables review at scale.</p>
+<p><strong>This is where Git becomes essential.</strong></p>
+<p>Git is not just version control—it’s the operating system for human-AI collaboration. It provides:</p>
+<ul>
+<li><strong>A safety net</strong> that makes every change reversible. Each change is saved as a <strong>commit</strong> (a snapshot with a message describing what changed). You work on <strong>branches</strong> (isolated copies of the codebase), keeping <strong>main</strong> (the primary branch) stable until changes are verified.</li>
+<li><strong>A planning framework</strong> through <strong>Issues</strong>—tickets that describe a task, bug, or feature request before any code is written.</li>
+<li><strong>A review gate</strong> through <strong>Pull Requests (PRs)</strong>—when you want to merge a branch into main, you open a PR that shows all the changes for review and discussion.</li>
+<li><strong>An automation layer</strong> through <strong>CI/CD</strong> (Continuous Integration / Continuous Deployment)—automated pipelines (often via <strong>GitHub Actions</strong>) that run tests, linters, and checks on every PR.</li>
+</ul>
+<p>Why does this matter more than ever? Let’s dive deeper.</p>
+<hr>
+<h2 id="part-1-feel--how-development-has-changed-in-the-ai-era">Part 1: Feel — How Development Has Changed in the AI Era</h2>
+<h3 id="from-solo-development-to-human-ai-collaboration">From Solo Development to Human-AI Collaboration</h3>
+<p>In the past, Git workflows primarily served human-to-human collaboration. Solo developers could commit directly to main, bypass code review, test manually (or not at all)—with complete freedom. Open source contributors, on the other hand, had to create PRs, pass reviews, and meet CI requirements.</p>
+<p>If you didn’t want to collaborate, you could ignore all the “best practices” and hack freely in your own repo. Many developers did exactly this.</p>
+<h3 id="llms-reshape-the-collaboration-model">LLMs Reshape the Collaboration Model</h3>
+<p><strong>The new reality</strong>: Even solo developers are now collaborating—with AI. Before LLMs, the flow was simple: You → Your Code, with full control. Now it’s: You → AI Agent → Your Code—shared control with a non-human collaborator.</p>
+<p>When you use AI to write code, you’re no longer the only author. Your AI collaborator:</p>
+<ul>
+<li>Codes faster than you can review</li>
+<li>Confidently introduces errors</li>
+<li>Cannot understand your project’s full context</li>
+<li>Won’t be held accountable for the bugs it creates</li>
+</ul>
+<p>Without guardrails, AI-generated code could silently break your project.</p>
+<h2 id="the-new-reality">The New Reality</h2>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;table style="width: 100%; border-collapse: collapse; margin: 1.5em 0;"></span></span>
+<span class="line"><span>  &#x3C;thead></span></span>
+<span class="line"><span>    &#x3C;tr style="background: #f5f5f5;"></span></span>
+<span class="line"><span>      &#x3C;th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Before LLMs&#x3C;/th></span></span>
+<span class="line"><span>      &#x3C;th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">After LLMs&#x3C;/th></span></span>
+<span class="line"><span>    &#x3C;/tr></span></span>
+<span class="line"><span>  &#x3C;/thead></span></span>
+<span class="line"><span>  &#x3C;tbody></span></span>
+<span class="line"><span>    &#x3C;tr>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">"I wrote it, I trust it"&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">"AI wrote it, I must verify it"&#x3C;/td>&#x3C;/tr></span></span>
+<span class="line"><span>    &#x3C;tr>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Code review = optional for solo devs&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Code review = essential (you review AI)&#x3C;/td>&#x3C;/tr></span></span>
+<span class="line"><span>    &#x3C;tr>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">CI/CD = nice to have&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">CI/CD = critical safety net&#x3C;/td>&#x3C;/tr></span></span>
+<span class="line"><span>    &#x3C;tr>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Branches = for teams&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Branches = for isolating AI experiments&#x3C;/td>&#x3C;/tr></span></span>
+<span class="line"><span>    &#x3C;tr>&#x3C;td style="padding: 10px;">"Move fast, break things"&#x3C;/td>&#x3C;td style="padding: 10px;">"Move fast, but guard against AI mistakes"&#x3C;/td>&#x3C;/tr></span></span>
+<span class="line"><span>  &#x3C;/tbody></span></span>
+<span class="line"><span>&#x3C;/table></span></span></code></pre>
+<p>The Git workflow once considered “overkill” for solo projects is now <strong>essential</strong>. So how do we allow AI to work efficiently while maintaining control? We need a systematic solution.</p>
+<hr>
+<h2 id="part-2-imagine--git-based-safety-workflow">Part 2: Imagine — Git-Based Safety Workflow</h2>
+<h3 id="git-as-a-systematic-safety-net">Git as a Systematic Safety Net</h3>
+<p>Git-based workflows provide correctness guarantees through structured collaboration. The key insight: tools designed for human collaboration perfectly fit human-AI collaboration scenarios.</p>
+<p><img src="/assets/images/workflow-loop.png" alt="The three-phase workflow: Planning → Action → Review, with a feedback loop from Review back to Action"></p>
+<p>The workflow has three phases:</p>
+<ul>
+<li><strong>Planning</strong>: Humans define goals through Issues and Milestones, providing clear guidance for AI.</li>
+<li><strong>Action</strong>: AI agent implements features through commits and pull requests, handling the main coding work.</li>
+<li><strong>Review</strong>: Both AI (via CI/CD) and humans verify results through automated tests and code review.</li>
+</ul>
+<p>If problems are found, the workflow forms a feedback loop: AI fixes the code until it passes all checks. Then humans approve and merge to main. This establishes clear trust boundaries: <strong>AI can create and propose, humans approve and control.</strong> AI has write access to branches, but only humans have merge access to main.</p>
+<p>Each component catches different types of errors:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;table style="width: 100%; border-collapse: collapse; margin: 1.5em 0;"></span></span>
+<span class="line"><span>  &#x3C;thead></span></span>
+<span class="line"><span>    &#x3C;tr style="background: #f5f5f5;"></span></span>
+<span class="line"><span>      &#x3C;th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Component&#x3C;/th></span></span>
+<span class="line"><span>      &#x3C;th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">What It Catches&#x3C;/th></span></span>
+<span class="line"><span>      &#x3C;th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Why It Matters for AI&#x3C;/th></span></span>
+<span class="line"><span>    &#x3C;/tr></span></span>
+<span class="line"><span>  &#x3C;/thead></span></span>
+<span class="line"><span>  &#x3C;tbody></span></span>
+<span class="line"><span>    &#x3C;tr>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">&#x3C;strong>Issue&#x3C;/strong>&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Unclear requirements&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">AI needs clear specs to generate correct code&#x3C;/td>&#x3C;/tr></span></span>
+<span class="line"><span>    &#x3C;tr>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">&#x3C;strong>Branch&#x3C;/strong>&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Damage to working code&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Isolates AI's potential errors before verification&#x3C;/td>&#x3C;/tr></span></span>
+<span class="line"><span>    &#x3C;tr>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">&#x3C;strong>Pull Request&#x3C;/strong>&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Unreviewed changes&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Creates mandatory discussion point before merge&#x3C;/td>&#x3C;/tr></span></span>
+<span class="line"><span>    &#x3C;tr>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">&#x3C;strong>CI/CD&#x3C;/strong>&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Syntax errors, test failures&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Automatically catches AI "hallucinations"&#x3C;/td>&#x3C;/tr></span></span>
+<span class="line"><span>    &#x3C;tr>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">&#x3C;strong>Review&#x3C;/strong>&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Logic errors, style violations&#x3C;/td>&#x3C;td style="padding: 10px; border-bottom: 1px solid #eee;">Human catches what automation misses&#x3C;/td>&#x3C;/tr></span></span>
+<span class="line"><span>    &#x3C;tr>&#x3C;td style="padding: 10px;">&#x3C;strong>Merge&#x3C;/strong>&#x3C;/td>&#x3C;td style="padding: 10px;">Unapproved changes&#x3C;/td>&#x3C;td style="padding: 10px;">Nothing reaches production without human consent&#x3C;/td>&#x3C;/tr></span></span>
+<span class="line"><span>  &#x3C;/tbody></span></span>
+<span class="line"><span>&#x3C;/table></span></span></code></pre>
+<h3 id="anti-pattern-vs-best-practice">Anti-Pattern vs. Best Practice</h3>
+<p>❌ <strong>Dangerous</strong>: Letting AI commit directly to main → broken production.</p>
+<p>✅ <strong>Safe</strong>: AI opens PR → Review → CI/CD → Human approves → Merge → verified code reaches main.</p>
+<hr>
+<h2 id="part-3-do--a-complete-example-from-issue-to-merge">Part 3: Do — A Complete Example from Issue to Merge</h2>
+<p>Let’s demonstrate the complete workflow using <a href="https://github.com/nzy1997/ILPQEC/issues/11">Issue #11</a> from the ILPQEC project (an integer linear programming quantum error correction package), resolved by <a href="https://github.com/nzy1997/ILPQEC/pull/13">PR #13</a>.</p>
+<blockquote>
+<p><strong>Prerequisites</strong>: Install Git and GitHub CLI (<code>gh</code>). You can prompt AI to execute:</p>
+</blockquote>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>prompt> Install git and gh on my system, authenticate gh with my GitHub account</span></span></code></pre>
+<hr>
+<h3 id="phase-1-planning--start-with-an-issue">Phase 1: Planning — Start with an Issue</h3>
+<p>I wanted to benchmark our ILP decoder against Google’s tesseract-decoder. Rather than rushing to open an editor, I created an Issue (<a href="https://github.com/nzy1997/ILPQEC/issues/11">#11</a>):</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#E6EDF3">Ref: https://github.com/quantumlib/tesseract-decoder</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF;font-weight:bold">## TODOs:</span></span>
+<span class="line"><span style="color:#FFA657">1.</span><span style="color:#E6EDF3"> Setup a local env for benchmarking.</span></span>
+<span class="line"><span style="color:#FFA657">2.</span><span style="color:#E6EDF3"> Setup a dataset for benchmarking.</span></span>
+<span class="line"><span style="color:#FFA657">3.</span><span style="color:#E6EDF3"> Compare the logical error rate and computing time.</span></span>
+<span class="line"><span style="color:#FFA657">4.</span><span style="color:#E6EDF3"> Run a benchmark.</span></span>
+<span class="line"><span style="color:#FFA657">5.</span><span style="color:#E6EDF3"> Clearly document this result.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Note: this is for winter school demonstration. @nzy1997</span></span></code></pre>
+<p>On one hand, I wanted the Issue to serve as a plan showcase, enabling discussion with the software author and uncovering potential problems.</p>
+<p><strong>Key principle</strong>: “Issue First, No Issue, No Action.” Issues create space for discussion <em>before</em> code is written.</p>
+<h3 id="issues--todos">Issues ≠ TODOs</h3>
+<p>A common misconception: issues are just TODO lists. They’re not. <strong>An issue is not a commitment to implement—it’s an invitation to discuss.</strong></p>
+<p>Humans have ideas all the time. Some are brilliant, some are impractical, some sound crazy but turn out to be breakthroughs. <strong>Record them all.</strong> The most beautiful ideas in your project will come from these moments of inspiration—but only if you capture them before they fade.</p>
+<p>Don’t hesitate to open an issue whenever a new idea strikes you. Issues are for <em>resolving uncertainty</em>, not just for <em>decided things without uncertainty</em>. That half-formed thought about a better algorithm? Write an issue. That wild feature idea you’re not sure is feasible? Write an issue. That nagging feeling something could be improved? Write an issue.</p>
+<p>The issue becomes a space where:</p>
+<ul>
+<li>You clarify your own thinking by writing it down</li>
+<li>Collaborators (human or AI) can ask questions and poke holes</li>
+<li>The idea can mature through discussion before any code is written</li>
+<li>You can decide <em>not</em> to implement it—and that’s perfectly fine</li>
+</ul>
+<p><strong>Issues are cheap. Wasted implementation effort is expensive.</strong> Write the issue first.</p>
+<hr>
+<h3 id="phase-2-action--ai-creates-a-pull-request">Phase 2: Action — AI Creates a Pull Request</h3>
+<p>With the issue defined, type in Claude Code or Cursor:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>prompt> Fix issue #11 of repo: https://github.com/nzy1997/ILPQEC by creating a pr, use gh.</span></span></code></pre>
+<p><strong>What the AI did (<a href="https://github.com/nzy1997/ILPQEC/pull/13">PR #13</a>):</strong></p>
+<p>The AI created a feature branch, implemented the code changes, and automatically opened a PR:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79C0FF;font-weight:bold">## Summary</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> Add tesseract-decoder support to </span><span style="color:#79C0FF">`benchmark_decoders.py`</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> Add </span><span style="color:#79C0FF">`build_tesseract()`</span><span style="color:#E6EDF3"> function to construct tesseract decoder from Stim DEM</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> Add CLI flags </span><span style="color:#79C0FF">`--skip-tesseract`</span><span style="color:#E6EDF3"> and </span><span style="color:#79C0FF">`--tesseract-beam`</span><span style="color:#E6EDF3"> for configuration</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> Update README.md and docs/benchmarks.md with tesseract references</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF;font-weight:bold">## Test plan</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> [ ] Install tesseract-decoder: </span><span style="color:#79C0FF">`pip install tesseract-decoder`</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> [ ] Run benchmark: </span><span style="color:#79C0FF">`python benchmark/benchmark_decoders.py --shots 1000 --distance 3`</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> [ ] Verify tesseract decoder output is included in results</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Closes #11</span></span></code></pre>
+<p><strong>Files changed</strong>: 3 files (+87 lines, -46 lines)</p>
+<hr>
+<h3 id="phase-3-review--the-iteration-loop">Phase 3: Review — The Iteration Loop</h3>
+<p>This is where the workflow shines. The PR wasn’t merged immediately—it went through iterations:</p>
+<ol>
+<li>
+<p><strong>CI/CD runs automatically</strong> → GitHub Actions ran the test suite on the PR. Tests passed, but linting flagged a style issue.</p>
+</li>
+<li>
+<p><strong>AI review</strong> → Clicked “Review by Copilot” on GitHub. Copilot flagged an import error.</p>
+</li>
+<li>
+<p><strong>Human review</strong> → Go to the PR page, click “Files changed” tab to see the diff. Click the ”+” button next to any line to leave a comment.</p>
+</li>
+<li>
+<p><strong>Fix the issues</strong> → Type in Claude Code or Cursor:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>prompt> Check PR comments, fix</span></span></code></pre>
+<p>AI agent fixed all comments and pushed the changes to the branch. CI/CD re-runs automatically on the new commits.</p>
+</li>
+<li>
+<p><strong>Additional fixes</strong> → The maintainer noticed the benchmark wasn’t run on the same machine:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>prompt> Run the benchmark locally, document the benchmark results in README/docs.</span></span></code></pre>
+<p>AI agent ran the benchmark and documented the results.</p>
+</li>
+<li>
+<p><strong>Merge</strong> → Once CI passes and review is complete:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>prompt> Merge PR #13, use gh.</span></span></code></pre>
+</li>
+</ol>
+<p>Finally, the author merged the PR, and <a href="https://github.com/nzy1997/ILPQEC/issues/11">Issue #11</a> was automatically closed.</p>
+<p><strong>Result</strong>: ~15 minutes of human time. AI did the heavy lifting. The final result is <a href="https://github.com/nzy1997/ILPQEC/pull/13">PR #13</a>.</p>
+<hr>
+<h2 id="part-4-share--leave-a-trail">Part 4: Share — Leave a Trail</h2>
+<p>Imagine this: your advisor asks “what did you accomplish this week?” or a colleague wants to build on your work. You vaguely remember fixing something important with AI, but the chat history is gone, and the commits just say “fix bug.” Six months later, returning to this code—you’ve completely forgotten why you made those changes, and AI certainly won’t remember.</p>
+<p><strong>Without documentation, AI-assisted work becomes a black box.</strong> AI generates code, but documentation gives code credibility and reproducibility.</p>
+<p>After completing each task, systematically document:</p>
+<ul>
+<li><strong>Root cause</strong>: Link to the related Issue</li>
+<li><strong>Solution</strong>: Key decisions and reasoning</li>
+<li><strong>Verification</strong>: Tests run, benchmarks, manual checks</li>
+</ul>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>prompt> Document what we did to fix issue #11 in the PR description.</span></span></code></pre>
+<h3 id="best-practices-for-documentation">Best Practices for Documentation</h3>
+<p><strong>Use issues liberally.</strong> Don’t just create one issue per feature—create sub-issues for complex tasks, and use comments to record discussions, decisions, and dead ends. Future you will thank past you for writing “tried approach X, failed because Y, switched to Z.”</p>
+<p><strong>Save logs and outputs.</strong> Create a <code>logs/</code> folder in your repo. When you run experiments or benchmarks, save the output with a date signature:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>logs/</span></span>
+<span class="line"><span>├── 2026-01-15_benchmark_v1.log</span></span>
+<span class="line"><span>├── 2026-01-18_benchmark_v2.log</span></span>
+<span class="line"><span>└── 2026-01-22_benchmark_final.log</span></span></code></pre>
+<p>This creates a traceable history of your results—essential for research reproducibility.</p>
+<p><strong>Git captures <em>what</em> changed. Documentation captures <em>why</em> and <em>how you know it works</em>.</strong></p>
+<hr>
+<h2 id="conclusion-humans-are-issue-makers">Conclusion: Humans Are Issue Makers</h2>
+<p>In the vibe coding era, Git has undoubtedly become more important than ever. In the Git workflow, <strong>Issues are the most critical element</strong>.</p>
+<p>Looking back at this entire workflow, you’ll discover a striking fact: the human’s role in development is merely to <strong>record</strong> issues, <strong>discuss</strong> issues, <strong>plan</strong> issues, and ultimately <strong>confirm</strong> whether issues are resolved. It’s the AI that solves the problems.</p>
+<p>Therefore, the conclusion: <strong>“Humans are essentially Issue Makers!”</strong> — This is the one thing AI cannot replace, no matter what.</p>
+<hr>
+<h2 id="references-and-further-reading">References and Further Reading</h2>
+<ul>
+<li><a href="/vibe-coding/">Vibe Coding Done Right</a> - Test-driven approach to AI-assisted coding</li>
+<li><a href="https://github.com/nzy1997/ILPQEC">ILPQEC Project</a> - Real example of this workflow</li>
+<li><a href="https://cli.github.com/manual/">GitHub CLI Documentation</a> - Learn <code>gh</code> commands</li>
+<li><a href="https://docs.github.com/en/actions">GitHub Actions Documentation</a> - Set up CI/CD</li>
+<li><a href="https://git-scm.com/doc">Git Documentation</a> - Master version control</li>
+</ul>
+<hr>
+<h2 id="acknowledgments">Acknowledgments</h2>
+<p>This blog was inspired by discussions with Lei Wang, Siyuan Chen, and Longli Zheng.</p></div> </article> </main> <footer data-astro-cid-sz7xmlte> <div class="inner meta" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>© 2026 Jin-Guo Liu Group · HKUST(GZ)</span> <span data-astro-cid-sz7xmlte> <a href="mailto:jinguoliu@hkust-gz.edu.cn" data-astro-cid-sz7xmlte>email</a> ·
+<a href="https://github.com/CodingThrust" data-astro-cid-sz7xmlte>github</a> ·
+<a href="http://zulip.hkust-gz.edu.cn/" data-astro-cid-sz7xmlte>zulip</a> ·
+<a href="/feed.xml" data-astro-cid-sz7xmlte>rss</a> </span> </div> </footer>  </body></html> 

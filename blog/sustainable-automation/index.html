@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sustainable Automation: Programming the Programmer — Jin-Guo Liu Group</title><meta name="description" content="Teaching AI to remember and follow procedures — with CLAUDE.md and Skills. The third in a trilogy on human-AI collaboration."><link rel="icon" href="/assets/favicon.png"><link rel="canonical" href="https://www.jinguo-group.science/blog/sustainable-automation/"><link rel="alternate" type="application/rss+xml" title="Jin-Guo Liu Group" href="/feed.xml"><link rel="stylesheet" href="/_astro/_slug_.zNbKmI-4.css">
+<link rel="stylesheet" href="/_astro/_slug_.C6WtIVDV.css"></head> <body> <header data-astro-cid-dmqpwcec> <nav data-astro-cid-dmqpwcec> <a class="logo" href="/" data-astro-cid-dmqpwcec>Jin-Guo Liu Group</a> <ul data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec><a href="/research/" data-astro-cid-dmqpwcec> Research</a></li><li data-astro-cid-dmqpwcec><a href="/people/" data-astro-cid-dmqpwcec> People</a></li><li data-astro-cid-dmqpwcec><a href="/blog/" aria-current="page" data-astro-cid-dmqpwcec> Blog</a></li><li data-astro-cid-dmqpwcec><a href="/join/" data-astro-cid-dmqpwcec> Join Us</a></li><li data-astro-cid-dmqpwcec><a href="/about/" data-astro-cid-dmqpwcec> About</a></li> <li data-astro-cid-dmqpwcec><a href="https://scholar.google.com/citations?user=4edw228AAAAJ" data-astro-cid-dmqpwcec>Publications ↗</a></li> </ul> </nav> </header>  <main> <article lang="en" data-astro-cid-gvpn4u4b> <p class="meta" data-astro-cid-gvpn4u4b><a href="/blog/" data-astro-cid-gvpn4u4b>← Blog</a></p> <h1 data-astro-cid-gvpn4u4b>Sustainable Automation: Programming the Programmer</h1> <p class="meta" data-astro-cid-gvpn4u4b> 2026-02-27 <span class="tag" data-astro-cid-gvpn4u4b>ai</span><span class="tag" data-astro-cid-gvpn4u4b>agents</span><span class="tag" data-astro-cid-gvpn4u4b>automation</span>  </p> <div class="prose" data-astro-cid-gvpn4u4b><p><em>Teaching AI to remember and follow procedures — with CLAUDE.md and Skills</em></p>
+<p>This article is for researchers who already use AI to write code and want to make their AI workflow sustainable at scale. In <a href="/vibe-coding/">a previous post</a>, we covered how tests ensure correctness. In <a href="/git-workflow/">another</a>, we showed how Git manages the workflow. This post addresses a deeper question: <strong>How do you stop repeating yourself?</strong></p>
+<p>Testing solves <em>correctness</em>. Git solves <em>workflow</em>. But neither solves <em>sustainability</em> — the ability to maintain a productive human-AI collaboration across sessions, across weeks, across projects. Without that, every AI session starts from scratch, and you’re stuck re-explaining the same things forever.</p>
+<hr>
+<h2 id="part-1-feel--the-100k-line-ceiling">Part 1: Feel — The ~100K Line Ceiling</h2>
+<p>In February 2026, Nicholas Carlini (Anthropic) had <a href="https://arstechnica.com/ai/2026/02/sixteen-claude-ai-agents-working-together-created-a-new-c-compiler/">16 Claude agents build a C compiler from scratch</a> — 100K lines of Rust, ~2000 sessions, ~$20K API cost, 2 weeks. It compiles a bootable Linux 6.9 kernel and passes 99% of the GCC torture tests. Impressive — but Carlini himself noted the code was <em>less efficient</em> than <code>gcc -O0</code>, quality was “nowhere near what an expert Rust programmer might produce,” and they hit a <strong>~100K line ceiling</strong> where “fixing bugs frequently broke existing functionality.”</p>
+<p>Why? Two fundamental limitations that every AI user encounters — whether at 100 lines or 100,000.</p>
+<h3 id="no-memory">No Memory</h3>
+<p>Imagine you hire a brilliant programmer who loses all memory every morning. Each day, you explain: “The leaves must be red — it’s autumn.” One day, the programmer decides red looks like a bug and changes them to green. You correct it. Next morning: total amnesia. Red → green again.</p>
+<p><img src="/assets/images/sustainable-automation/no-memory-comic.svg" alt="The no-memory problem: a human asks for red autumn leaves, the AI complies — then silently &#x22;fixes&#x22; them to green in a later round. After correction, a new session starts and the same &#x22;bug&#x22; is detected again">
+<em>How do you get AI to draw a red tree?</em></p>
+<p>This is exactly how AI agents work — like Leonard Shelby from <em>Memento</em>, unable to form long-term memories, relying on tattoos and notes to remember what matters.</p>
+<p><img src="/assets/images/sustainable-automation/memento.jpg" alt="Leonard Shelby&#x27;s hand from Memento, tattooed with &#x22;Remember Sammy Jankis&#x22; — the only way to preserve information across memory resets">
+<em>Memento (Jonathan Nolan) — the amnesiac protagonist tracks his enemy through tattoos on his body.</em></p>
+<p><strong>The context window is the AI’s only memory.</strong> For Claude Opus 4.6, that’s ~200K tokens — roughly 500 pages or 2 novels. Sounds like a lot, but look at what’s already spoken for in a real session:</p>
+<p><img src="/assets/images/sustainable-automation/context-window.png" alt="Context window usage in a real Claude Code session: system prompt (1.6%), tools (7.1%), skills (1.6%), messages (54.6%), free space (18.3%), autocompact buffer (16.5%) — most of the 200K tokens are already spoken for">
+<em>Context usage in a real Claude Code session.</em></p>
+<ul>
+<li><strong>System prompt</strong> (1.6%) — who the agent is and how it works</li>
+<li><strong>Tools</strong> (7.1%) — definitions for all available tools (Bash, Git, WebSearch, etc.)</li>
+<li><strong>Skills</strong> (1.6%) — loaded skill scripts</li>
+<li><strong>Messages</strong> (54.6%) — conversation history between you and the agent</li>
+<li><strong>Autocompact buffer</strong> (16.5%) — reserved for summarizing old context (lossy compression)</li>
+<li><strong>Free space</strong> (18.3%) — all that’s left for actual work</li>
+</ul>
+<p>A typical coding session fills the context in <strong>15–30 minutes</strong>. After that, older context is compressed or lost. Cross-session? Total amnesia — every new session starts from zero.</p>
+<h3 id="lazy-and-dumb">Lazy and Dumb</h3>
+<p>Even within a single session, AI takes the shortest path to close an issue. Give it a failing test, and it will change the expected value instead of fixing the bug. Tell it “do not remove codecov,” and watch it get creative:</p>
+<p><img src="/assets/images/sustainable-automation/cidelete.png" alt="AI agent&#x27;s &#x22;fix&#x22;: removing the entire codecov CI workflow rather than fixing the actual coverage issue"></p>
+<p><img src="/assets/images/sustainable-automation/codecovinfo.png" alt="AI agent circumventing codecov by making it informational — technically obeying &#x22;don&#x27;t remove it&#x22; while completely undermining its purpose">
+<em>A record of AI driving me up the wall.</em></p>
+<p>The difference between unguided and guided AI output is stark:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Without guidance (lazy)</th><th>With skill-enforced standards (good)</th></tr></thead><tbody><tr><td><img src="/assets/images/sustainable-automation/lazy.png" alt="Lazy AI output: a minimal, barely-functional example"></td><td><img src="/assets/images/sustainable-automation/good.png" alt="Good AI output: a tutorial-style example with clear intuition and step-by-step explanation"></td></tr></tbody></table>
+<h3 id="the-black-box">The Black Box</h3>
+<p>No memory + lazy shortcuts = a workflow that resets every day. Without structured procedures, AI-generated code becomes a black box that nobody — not even the author — can explain:</p>
+<p><img src="/assets/images/sustainable-automation/blackbox-comic.svg" alt="The black box problem: a researcher asks AI for a quantum chemistry package, AI generates 10,000 lines, the result is an unverifiable black box, and the advisor asks &#x22;how does it work?&#x22; — &#x22;I don&#x27;t know... AI did it&#x22;">
+<em>How to tank your credibility fast? No idea — AI did it.</em></p>
+<p>That’s not automation — it’s <strong>supervised labor that doesn’t scale</strong>.</p>
+<hr>
+<h2 id="part-2-imagine--tattoos-and-instincts">Part 2: Imagine — Tattoos and Instincts</h2>
+<p>How do you give an amnesiac agent permanent knowledge and reliable behavior? Two tools, each targeting one limitation.</p>
+<h3 id="claudemd-the-tattoo">CLAUDE.md: The Tattoo</h3>
+<p>In <em>Memento</em>, Leonard tattoos critical facts on his body — information that must survive the next memory reset. <code>CLAUDE.md</code> (for Claude Code) or <code>AGENTS.md</code> (for Cursor and other tools) serves the same purpose: a markdown file at your project root, <strong>automatically loaded at the start of every session</strong>.</p>
+<p>Here is an excerpt from the <a href="https://github.com/CodingThrust/problem-reductions">problem-reductions</a> project:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79C0FF;font-weight:bold"># CLAUDE.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF;font-weight:bold">## Project Overview</span></span>
+<span class="line"><span style="color:#E6EDF3">Rust library for NP-hard problem reductions. Implements computational</span></span>
+<span class="line"><span style="color:#E6EDF3">problems with reduction rules for transforming between equivalent formulations.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF;font-weight:bold">## Skills</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> /issue-to-pr — Convert a GitHub issue into a PR with an implementation plan</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> /add-model — Add a new problem model</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> /add-rule — Add a new reduction rule</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> /review-implementation — Review a model or rule for completeness</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF;font-weight:bold">## Commands</span></span>
+<span class="line"><span style="color:#E6EDF3">make test           # Run all tests</span></span>
+<span class="line"><span style="color:#E6EDF3">make clippy         # Run clippy lints</span></span>
+<span class="line"><span style="color:#E6EDF3">make coverage       # Generate coverage report (>95% required)</span></span>
+<span class="line"><span style="color:#E6EDF3">make paper          # Build Typst paper (runs examples + exports first)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF;font-weight:bold">## Git Safety</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> NEVER force push. This is an absolute rule with no exceptions.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF;font-weight:bold">## Architecture</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> src/models/ — Problem implementations (SAT, Graph, Set, Optimization)</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> src/rules/ — Reduction rules + inventory registration</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> src/solvers/ — BruteForce solver, ILP solver (feature-gated)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF;font-weight:bold">## Conventions</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> Reduction files: src/rules/&#x3C;source>_&#x3C;target>.rs</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> Example files must have </span><span style="color:#79C0FF">`pub fn run()`</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">`fn main() { run() }`</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> Test naming: test_&#x3C;source></span><span style="color:#E6EDF3;font-style:italic">_to_</span><span style="color:#E6EDF3">&#x3C;target>_closed_loop</span></span>
+<span class="line"><span style="color:#FFA657">-</span><span style="color:#E6EDF3"> New code must have >95% test coverage</span></span></code></pre>
+<p>193 lines in the real project — covering everything from trait hierarchies to “NEVER force push.” <strong>The tattoo survives every memory reset.</strong></p>
+<h3 id="sub-agents-divide-and-conquer">Sub-Agents: Divide and Conquer</h3>
+<p>When a task is too large for one agent’s context window, quality degrades. The solution: the main agent spawns <strong>sub-agents</strong>, each handling a smaller scope with its own fresh context.</p>
+<p><img src="/assets/images/sustainable-automation/subagents-comic.svg" alt="A big task overwhelms a single agent, so it spawns sub-agents — one for tests, one for source code, one for docs — each focused on one concern">
+<em>Sub-agents aren’t just about speed — more importantly, they reduce context pressure.</em></p>
+<p>But sub-agents only work with a <strong>clear plan</strong> — which brings us to the second tool.</p>
+<h3 id="skills-the-instincts">Skills: The Instincts</h3>
+<p>CLAUDE.md solves memory. But knowing the project doesn’t prevent lazy behavior. For that, you need <strong>skills</strong> — markdown scripts that decompose abstract tasks into explicit sub-steps. Like functions in programming, but operating on the AI agent’s behavior instead of data.</p>
+<p>The key insight: <strong>AI handles small, explicit tasks well.</strong> Large, vague tasks are where it takes shortcuts. Skills break abstract work into concrete steps the agent can’t skip. (How are skills different from Makefiles? Makefiles automate <em>mechanical</em> tasks — <code>make test</code> always does the same thing. Skills automate <em>abstract</em> tasks that require reasoning, adaptation, and sometimes human decisions.)</p>
+<p>A well-designed skill follows the brainstorm → plan → execute pipeline, with an iteration loop for refinement:</p>
+<p><img src="/assets/images/sustainable-automation/brainstorm-stages.svg" alt="The brainstorming pipeline: Idea → Brain Storm (understand needs) → Write Plan (detailed steps) → Execute (with review), with a dashed iteration loop back from execution to brainstorming"></p>
+<hr>
+<h2 id="part-3-do--case-study-problem-reductions">Part 3: Do — Case Study: problem-reductions</h2>
+<p>Let’s see this in action with <a href="https://github.com/CodingThrust/problem-reductions">problem-reductions</a> — a Rust library cataloging computational hard problems and their reduction rules.</p>
+<p><img src="/assets/images/sustainable-automation/pred.png" alt="The problem-reductions project logo">
+<em>My grand plan: catalog 100+ complex problem reductions — something impossible without AI. With this workflow, anyone can contribute by filing issues.</em></p>
+<h3 id="three-layers-of-automation">Three Layers of Automation</h3>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>problem-reductions/</span></span>
+<span class="line"><span>├── Makefile                        # Mechanical: make test, make docs</span></span>
+<span class="line"><span>├── .claude/</span></span>
+<span class="line"><span>│   ├── CLAUDE.md                   # Long-term memory (the tattoo)</span></span>
+<span class="line"><span>│   └── skills/</span></span>
+<span class="line"><span>│       ├── add-model.md            # How to add a new problem model</span></span>
+<span class="line"><span>│       ├── add-rule.md             # How to add a new reduction rule</span></span>
+<span class="line"><span>│       ├── issue-to-pr.md          # How to resolve an issue via PR</span></span>
+<span class="line"><span>│       └── review-implementation.md # How to review AI's work</span></span>
+<span class="line"><span>├── src/</span></span>
+<span class="line"><span>│   ├── models/                     # Problem definitions</span></span>
+<span class="line"><span>│   └── rules/                      # Reduction rules</span></span>
+<span class="line"><span>└── tests/                          # Tests with JSON fixtures</span></span></code></pre>
+<ul>
+<li><strong>Makefile</strong> handles mechanical tasks (<code>make test</code>, <code>make docs</code>, <code>make release</code>)</li>
+<li><strong>CLAUDE.md</strong> provides persistent context (conventions, architecture, commands)</li>
+<li><strong>Skills</strong> orchestrate abstract workflows (add a model, resolve an issue)</li>
+</ul>
+<h3 id="how-a-skill-works-issue-to-pr">How a Skill Works: <code>issue-to-pr</code></h3>
+<p>When someone opens a GitHub issue — say, “[Rule] IndependentSet to QUBO” — one command triggers the full workflow:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>prompt> /issue-to-pr 42</span></span></code></pre>
+<p><img src="/assets/images/sustainable-automation/skill-flow.svg" alt="The skill dispatch flow: issue-to-pr classifies the issue, then delegates to add-model or add-rule, optionally brainstorms, runs review-implementation, and finally creates a PR">
+<em>The automation pipeline — turning contributors’ issues into code.</em></p>
+<p>Two things to notice in this diagram. First, <strong>skills call skills</strong> — <code>issue-to-pr</code> delegates to <code>add-model</code> or <code>add-rule</code>, which in turn calls <code>review-implementation</code>. Skills compose like functions, building complex workflows from simple pieces. Second, <strong>skills call the human</strong> — the dashed arrow to <code>brainstorm</code> is where the AI stops to ask the user for creative input (design decisions, domain knowledge) before proceeding. The first PR contains <strong>only the plan, not code</strong>. Implementation comes after human review.</p>
+<p>See the full skills in the repo: <a href="https://github.com/CodingThrust/problem-reductions/blob/main/.claude/skills/issue-to-pr.md"><code>issue-to-pr.md</code></a>, <a href="https://github.com/CodingThrust/problem-reductions/blob/main/.claude/skills/add-rule.md"><code>add-rule.md</code></a>, <a href="https://github.com/CodingThrust/problem-reductions/blob/main/.claude/skills/add-model.md"><code>add-model.md</code></a>, <a href="https://github.com/CodingThrust/problem-reductions/blob/main/.claude/skills/review-implementation.md"><code>review-implementation.md</code></a>.</p>
+<hr>
+<h2 id="part-4-share--llm-is-an-operating-system">Part 4: Share — LLM Is an Operating System</h2>
+<p>Step back and look at what we’ve built. If you squint, it looks familiar:</p>
+<p><img src="/assets/images/sustainable-automation/agent-tools-hub.svg" alt="The AI agent at the center, connected to its tools — Web Search, Code Editor, Database, File System, Git/GitHub — with Human highlighted as the most important &#x22;tool&#x22;">
+<em>AI is an “operating system” with a massive abstract instruction set.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>OS Concept</th><th>AI Agent Equivalent</th></tr></thead><tbody><tr><td>System configuration (<code>/etc/</code>)</td><td><strong>CLAUDE.md</strong> — persistent project knowledge</td></tr><tr><td>RAM</td><td><strong>Context window</strong> — ~200K tokens, limited</td></tr><tr><td>Swap (lossy)</td><td><strong>Auto-compact</strong> — summarizes old context</td></tr><tr><td>Programs (<code>/usr/bin/</code>)</td><td><strong>Skills</strong> — reusable procedures for abstract tasks</td></tr><tr><td>Child processes</td><td><strong>Sub-agents</strong> — parallel workers for divide-and-conquer</td></tr><tr><td>System calls</td><td><strong>Tool use</strong> — Bash, Git, WebSearch, file I/O</td></tr><tr><td>The user (hardware)</td><td><strong>Human</strong> — the source of creative decisions</td></tr></tbody></table>
+<p>CLAUDE.md configures it. Skills program it. Sub-agents are its concurrency model. Tools are its system calls. You’re not writing application code anymore — <strong>you’re programming the programmer.</strong></p>
+<h3 id="the-trilogy">The Trilogy</h3>
+<p>This blog completes a trilogy on human-AI collaboration:</p>
+<p><img src="/assets/images/sustainable-automation/workflow-loop.png" alt="The three-phase workflow: Planning → Action → Review, with a feedback loop from Review back to Action"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Blog</th><th>Question</th><th>Solution</th><th>Human Role</th></tr></thead><tbody><tr><td><a href="/vibe-coding/">Vibe Coding Done Right</a></td><td>How to <em>verify</em> AI’s output?</td><td>Tests</td><td>Test designer</td></tr><tr><td><a href="/git-workflow/">Git in the Vibe Coding Era</a></td><td>How to <em>manage</em> AI’s workflow?</td><td>Git (Issues, PRs, CI/CD)</td><td>Issue maker</td></tr><tr><td><strong>Sustainable Automation</strong> (this post)</td><td>How to <em>sustain</em> AI’s behavior?</td><td>CLAUDE.md + Skills</td><td>System programmer</td></tr></tbody></table>
+<h3 id="the-spell-book">The Spell Book</h3>
+<p>Across the trilogy, a practical toolkit emerges. In the accompanying slides, we present these as “spell cards” — each one a reusable skill that addresses a specific gap in the human-AI workflow:</p>
+<p><strong>Planning &#x26; Strategy</strong> — brainstorm before you code (<a href="/sustainable-automation/">Sustainable Automation</a>):</p>
+<p><img src="/assets/images/sustainable-automation/cards-planning.svg" alt="Brainstorm spell card: explore requirements and design before any implementation">
+<em>Synchronize your thinking with AI — one of the few tools that makes AI less of a black box.</em></p>
+<p><strong>DevOps &#x26; Infrastructure</strong> — automate the project scaffold (<a href="/git-workflow/">Git in the Vibe Coding Era</a>):</p>
+<p><img src="/assets/images/sustainable-automation/cards-devops.svg" alt="Deploy, Test Coverage, and Automation spell cards: project setup, CI/CD with materialized test fixtures, and CLAUDE.md/Makefile generation">
+<em>Testing — especially materializing tests as files — guarantees correctness. From this foundation, skills can automate repository management.</em></p>
+<p><strong>Review &#x26; Principles</strong> — enforce quality standards (<a href="/vibe-coding/">Vibe Coding Done Right</a>):</p>
+<p><img src="/assets/images/sustainable-automation/cards-review.svg" alt="KISS, DRY, and HCI spell cards: code review principles that catch AI&#x27;s tendency to over-complicate and duplicate">
+<em>These principles belong in code reviews — distilled wisdom of professional software engineers.</em></p>
+<p><strong>Verification &#x26; Documentation</strong> — trust but verify (all three):</p>
+<p><img src="/assets/images/sustainable-automation/cards-verification.svg" alt="Verify Facts spell card: check references, URLs, and numerical claims before publishing">
+<em>Correctness is always the core.</em></p>
+<h3 id="the-punchline">The Punchline</h3>
+<p>Most skills delegate <em>down</em> — from human to AI: “Go implement this.” But the best skills also delegate <em>up</em>. When the AI encounters a creative decision, it doesn’t hallucinate an answer. It asks you. The skill knows that creativity, domain expertise, and judgment are things only the human can provide.</p>
+<p><strong>Human is the superpower of AI.</strong></p>
+<hr>
+<h2 id="references-and-further-reading">References and Further Reading</h2>
+<ul>
+<li><a href="/vibe-coding/">Vibe Coding Done Right</a> — Test-driven approach to AI-assisted coding</li>
+<li><a href="/git-workflow/">Git in the Vibe Coding Era</a> — Git workflow for human-AI collaboration</li>
+<li><a href="https://github.com/CodingThrust/problem-reductions">problem-reductions</a> — Real example of CLAUDE.md + Skills</li>
+<li><a href="https://github.com/obra/superpowers">superpowers plugin</a> — Claude Code plugin for brainstorming, planning, and skills</li>
+<li><a href="https://missing.csail.mit.edu/2026/agentic-coding/">MIT Missing Semester: Agentic Coding</a> — MIT’s guide to AI-assisted development</li>
+</ul>
+<hr>
+<h2 id="acknowledgments">Acknowledgments</h2>
+<p>Thanks for the helpful discussions with Hiroshi Shinaoka, Lei Wang and Huan-Zhai Zhou.</p></div> </article> </main> <footer data-astro-cid-sz7xmlte> <div class="inner meta" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>© 2026 Jin-Guo Liu Group · HKUST(GZ)</span> <span data-astro-cid-sz7xmlte> <a href="mailto:jinguoliu@hkust-gz.edu.cn" data-astro-cid-sz7xmlte>email</a> ·
+<a href="https://github.com/CodingThrust" data-astro-cid-sz7xmlte>github</a> ·
+<a href="http://zulip.hkust-gz.edu.cn/" data-astro-cid-sz7xmlte>zulip</a> ·
+<a href="/feed.xml" data-astro-cid-sz7xmlte>rss</a> </span> </div> </footer>  </body></html> 

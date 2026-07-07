@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Give AI Agents a Clock — Jin-Guo Liu Group</title><meta name="description" content="Hibernation infrastructure for agents that work across time, using Cryochamber's disk-size monitor as the running example."><link rel="icon" href="/assets/favicon.png"><link rel="canonical" href="https://www.jinguo-group.science/blog/give-ai-agents-a-clock/"><link rel="alternate" type="application/rss+xml" title="Jin-Guo Liu Group" href="/feed.xml"><link rel="stylesheet" href="/_astro/_slug_.zNbKmI-4.css">
+<link rel="stylesheet" href="/_astro/_slug_.C6WtIVDV.css"></head> <body> <header data-astro-cid-dmqpwcec> <nav data-astro-cid-dmqpwcec> <a class="logo" href="/" data-astro-cid-dmqpwcec>Jin-Guo Liu Group</a> <ul data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec><a href="/research/" data-astro-cid-dmqpwcec> Research</a></li><li data-astro-cid-dmqpwcec><a href="/people/" data-astro-cid-dmqpwcec> People</a></li><li data-astro-cid-dmqpwcec><a href="/blog/" aria-current="page" data-astro-cid-dmqpwcec> Blog</a></li><li data-astro-cid-dmqpwcec><a href="/join/" data-astro-cid-dmqpwcec> Join Us</a></li><li data-astro-cid-dmqpwcec><a href="/about/" data-astro-cid-dmqpwcec> About</a></li> <li data-astro-cid-dmqpwcec><a href="https://scholar.google.com/citations?user=4edw228AAAAJ" data-astro-cid-dmqpwcec>Publications ↗</a></li> </ul> </nav> </header>  <main> <article lang="en" data-astro-cid-gvpn4u4b> <p class="meta" data-astro-cid-gvpn4u4b><a href="/blog/" data-astro-cid-gvpn4u4b>← Blog</a></p> <h1 data-astro-cid-gvpn4u4b>Give AI Agents a Clock</h1> <p class="meta" data-astro-cid-gvpn4u4b> 2026-07-07 <span class="tag" data-astro-cid-gvpn4u4b>ai</span><span class="tag" data-astro-cid-gvpn4u4b>agents</span><span class="tag" data-astro-cid-gvpn4u4b>automation</span><span class="tag" data-astro-cid-gvpn4u4b>cryochamber</span>  · <a href="/blog/give-ai-agents-a-clock/zh/" data-astro-cid-gvpn4u4b>中文版</a> </p> <div class="prose" data-astro-cid-gvpn4u4b><p><em>Hibernation infrastructure for agents that work across time</em></p>
+<p><img src="/assets/images/cryochamber-give-ai-agents-a-clock.jpg" alt="Cryochamber cartoon: make a plan, hibernate, wake at the right time, and choose the next wake"></p>
+<p>I kept running into a small problem with long-running AI agents: most of the
+time, there is nothing for them to do.</p>
+<p>They are waiting for a human reply, a deadline, a threshold, or some external
+change. But many agent systems still treat waiting as activity. They wake the
+model on a fixed heartbeat, ask whether anything changed, and pay for another
+model turn even when the answer is no.</p>
+<p>Cryochamber is my attempt at a different primitive: let the agent finish one
+session, decide when the next session is worth running, and then hibernate.</p>
+<p>The metaphor is borrowed from interstellar travel. If humans ever travel to a
+planet outside the solar system, the hard part is not only moving fast. It is
+surviving the long middle of the journey: preserving the mission, sleeping
+through the empty years, and waking at the moments that matter. Cryochamber
+applies the same idea to AI agents. The agent should not burn energy just to
+remain present. It should remember the mission, sleep through idle time, and
+wake when there is useful work to do.</p>
+<h2 id="waiting-is-not-work">Waiting Is Not Work</h2>
+<p>A heartbeat is useful when you want continuous presence. OpenClaw, for example,
+describes heartbeat as periodic agent turns in the main session, with defaults
+like 30 minutes or 1 hour. Its docs also discuss cost controls, because
+heartbeats are full agent turns and shorter intervals burn more tokens.
+That is the right shape for some products. Sometimes you want an assistant to
+feel present.</p>
+<p>But for sparse work, heartbeat feels like the wrong default. If nothing changed,
+I do not want the model to think. I want a daemon to wait.</p>
+<p>This matters because idle model turns are still model turns. OpenAI prices API
+usage by input and output tokens, and its conversation-state docs note that
+previous input tokens in a response chain are still billed as input tokens.
+Prompt caching can reduce repeated-prefix cost, but it does not make idle turns
+free.</p>
+<p>The cheapest idle agent turn is the one you do not run.</p>
+<h2 id="a-disk-monitor-that-decides-when-to-wake">A Disk Monitor That Decides When To Wake</h2>
+<p>The example that made this concrete for me was a small chamber called
+<code>disk-size-warn</code>.</p>
+<p>Its job is ordinary: check my disk usage and warn me before things get painful.
+The plan says to inspect <code>/</code> and <code>/System/Volumes/Data</code>, report when usage is
+high, and never modify the system without permission.</p>
+<p>The interesting part is the wake policy:</p>
+<ul>
+<li>under 80%: sleep for 7 days</li>
+<li>80-85%: sleep for 3 days</li>
+<li>85-90%: check again tomorrow</li>
+<li>over 90%: check again in 12 hours</li>
+</ul>
+<p>That is not complicated, but it changes the control loop. The schedule is not
+fixed outside the agent. The agent observes the current situation, decides which
+case it is in, sends a report if needed, schedules the next wake, and
+hibernates.</p>
+<p>When the disk was at 87%, the chamber checked daily and started looking for
+cleanup targets. When I challenged the first diagnosis, I sent it a message; the
+daemon woke the agent immediately. The agent inspected deeper directories,
+updated its notes, and eventually found a major hidden consumer: <code>~/.julia</code> was
+using about 70 GB.</p>
+<p>A cron job could run <code>df</code> every day. A heartbeat agent could ask itself every
+half hour whether the disk needs attention. But this felt different: the model
+was invoked only when the situation justified another session.</p>
+<h2 id="the-plan-is-a-policy-not-a-schedule">The Plan Is A Policy, Not A Schedule</h2>
+<p>In Cryochamber, <code>plan.md</code> is closer to a policy document than a script.</p>
+<p>For <code>disk-size-warn</code>, the plan does not say “run every day forever.” It says
+what matters: disk pressure, cleanup suggestions, user permission, and the next
+wake interval for each severity level.</p>
+<p>At the end of a session, the agent turns that policy into a concrete TODO:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>check disk usage and report if near full</span></span>
+<span class="line"><span>at 2026-05-04T21:30</span></span></code></pre>
+<p>The daemon owns that waiting state. It can sleep through the idle period without
+calling the model. If the TODO becomes due, it starts another session. If I send
+a message, it wakes immediately. If the machine was suspended and the wake is
+late, the next prompt includes a delayed-wake notice so the agent can account
+for that.</p>
+<p>That separation is the core design: the agent owns judgment; the daemon owns
+waiting.</p>
+<h2 id="cron-heartbeat-and-hibernation">Cron, Heartbeat, And Hibernation</h2>
+<p>Cron gives the operator a clock. It is simple and reliable, but the schedule is
+fixed outside the agent.</p>
+<p>Heartbeat gives the agent a pulse. It can keep an assistant present, but
+“nothing happened” can still become another model turn.</p>
+<p>Hermes Agent has a broader automation model: cron jobs, skills, persistent
+goals, and fresh agent sessions. Its cron docs include a <code>wakeAgent: false</code>
+pre-check path for frequent polls, specifically to avoid paying for
+zero-content agent turns when nothing changed. That is a good optimization.</p>
+<p>Cryochamber starts from the other side. Hibernation is the primitive. The agent
+does one bounded session of work, decides when the next session is worth
+running, and exits.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>cron:      the operator decides when the agent runs</span></span>
+<span class="line"><span>heartbeat: the system keeps giving the agent turns</span></span>
+<span class="line"><span>cryo:      the agent decides when the next turn is worth running</span></span></code></pre>
+<p>Some tasks should be cron jobs. Some assistants need heartbeat. But for adaptive
+long-running work, I want the default state to be sleep.</p>
+<h2 id="what-the-daemon-guarantees">What The Daemon Guarantees</h2>
+<p>Once the model is allowed to disappear between sessions, the boring parts become
+important.</p>
+<p>Cryochamber keeps those parts outside the model. The daemon remembers the next
+wake time, watches the inbox, starts the agent process, records the session log,
+and enforces the lifecycle. The agent communicates through <code>cryo-agent</code>: send a
+message, receive inbox messages, add a TODO, hibernate.</p>
+<p>This gives the system a few practical guarantees. Every session leaves a visible
+message, even if the agent exits too early. Every inbox message that the agent
+receives gets either an agent reply or a daemon fallback. TODOs are claimed when
+they are due, and if a session crashes, the daemon reschedules the claimed work
+with backoff instead of silently dropping it.</p>
+<p>The model can be clever when it is awake. The daemon should be dependable while
+the model is gone.</p>
+<h2 id="agents-that-work-across-time">Agents That Work Across Time</h2>
+<p>The point of Cryochamber is not that every agent needs a daemon. It is that some
+agent work naturally spans time.</p>
+<p>For <code>disk-size-warn</code>, the question is not only “what should the agent do?” It is
+also “when is the next useful moment to think?” The answer depends on the
+situation: disk pressure, trend, urgency, and whether I have asked a question.</p>
+<p>That is the clock I want to give agents.</p>
+<p>Not continuous presence. Not fixed polling. A small loop:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>wake -> observe -> act -> choose next wake -> hibernate</span></span></code></pre>
+<p>If the world changes sooner, wake sooner. If nothing changes, spend nothing. If
+the situation becomes urgent, escalate. If the work is done for now, disappear.</p>
+<p>Cryochamber is my attempt to make that loop ordinary.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://docs.openclaw.ai/gateway/heartbeat">OpenClaw Heartbeat</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/cron">Hermes Agent scheduled tasks</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/goals">Hermes Agent persistent goals</a></li>
+<li><a href="https://developers.openai.com/api/docs/pricing">OpenAI API pricing</a></li>
+<li><a href="https://developers.openai.com/api/docs/guides/conversation-state">OpenAI conversation state</a></li>
+<li><a href="https://developers.openai.com/api/docs/guides/prompt-caching">OpenAI prompt caching</a></li>
+</ul></div> </article> </main> <footer data-astro-cid-sz7xmlte> <div class="inner meta" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>© 2026 Jin-Guo Liu Group · HKUST(GZ)</span> <span data-astro-cid-sz7xmlte> <a href="mailto:jinguoliu@hkust-gz.edu.cn" data-astro-cid-sz7xmlte>email</a> ·
+<a href="https://github.com/CodingThrust" data-astro-cid-sz7xmlte>github</a> ·
+<a href="http://zulip.hkust-gz.edu.cn/" data-astro-cid-sz7xmlte>zulip</a> ·
+<a href="/feed.xml" data-astro-cid-sz7xmlte>rss</a> </span> </div> </footer>  </body></html> 
