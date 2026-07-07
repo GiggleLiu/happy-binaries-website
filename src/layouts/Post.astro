@@ -18,7 +18,7 @@ const dateStr = entry.data.date.toISOString().slice(0, 10);
 ---
 <Base title={`${entry.data.title} — Jin-Guo Liu Group`} description={entry.data.description}>
   <article lang={entry.data.lang}>
-    <p class="crumb"><a href="/blog/">~/blog</a>/{entry.data.lang === 'zh' ? entry.data.translationOf + '/zh' : entry.id}</p>
+    <p class="meta"><a href="/blog/">← Blog</a></p>
     <h1>{entry.data.title}</h1>
     <p class="meta">
       {dateStr}

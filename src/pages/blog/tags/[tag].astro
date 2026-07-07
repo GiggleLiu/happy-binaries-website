@@ -16,7 +16,7 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 <Base title={`#${tag} — Jin-Guo Liu Group`}>
-  <p class="crumb"><a href="/blog/">~/blog</a>/tags/{tag}</p>
-  <h1 class="prompt-h">grep -r "{tag}"</h1>
+  <p class="meta"><a href="/blog/">← Blog</a></p>
+  <h1>Posts tagged “{tag}”</h1>
   <PostList posts={posts} />
 </Base>

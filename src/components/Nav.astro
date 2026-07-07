@@ -1,22 +1,22 @@
 ---
 const items = [
-  { href: '/research/', label: 'research' },
-  { href: '/people/', label: 'people' },
-  { href: '/blog/', label: 'blog' },
-  { href: '/join/', label: 'join' },
-  { href: '/about/', label: 'about' },
+  { href: '/research/', label: 'Research' },
+  { href: '/people/', label: 'People' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/join/', label: 'Join Us' },
+  { href: '/about/', label: 'About' },
 ];
 const { pathname } = Astro.url;
 ---
 <header>
   <nav>
-    <a class="logo" href="/">~/jinguo-group</a>
+    <a class="logo" href="/">Jin-Guo Liu Group</a>
     <ul>
       {items.map((it) => (
         <li><a href={it.href} aria-current={pathname.startsWith(it.href) ? 'page' : undefined}>
           {it.label}</a></li>
       ))}
-      <li><a href="https://scholar.google.com/citations?user=4edw228AAAAJ">publications ↗</a></li>
+      <li><a href="https://scholar.google.com/citations?user=4edw228AAAAJ">Publications ↗</a></li>
     </ul>
   </nav>
 </header>
@@ -26,11 +26,9 @@ const { pathname } = Astro.url;
         display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: baseline;
         font-family: var(--font-mono); font-size: 0.95rem; }
   .logo { color: var(--text); font-weight: 700; }
-  .logo::before { content: '$ '; color: var(--accent); }
   ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.1rem; list-style: none;
        margin: 0; padding: 0; }
   a { color: var(--muted); }
-  a[aria-current='page'] { color: var(--accent); }
-  a[aria-current='page']::before { content: '['; }
-  a[aria-current='page']::after { content: ']'; }
+  a[aria-current='page'] { color: var(--accent); text-decoration: underline;
+                           text-underline-offset: 5px; }
 </style>

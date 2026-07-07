@@ -9,13 +9,12 @@ const groups: [string, string][] = [
 ];
 ---
 <Base title="People — Jin-Guo Liu Group">
-  <p class="crumb">~/people</p>
-  <h1 class="prompt-h">People</h1>
+  <h1>People</h1>
   {groups.map(([role, label]) => {
     const members = (people as any[]).filter((p) => p.role === role);
     return members.length > 0 && (
       <section class="section">
-        <h2 class="prompt-h">{label}</h2>
+        <h2>{label}</h2>
         {members.map((p) => <MemberCard person={p} />)}
       </section>
     );

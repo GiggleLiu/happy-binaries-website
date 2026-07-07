@@ -6,12 +6,11 @@ import { sortedEnPosts } from '../../lib/blog';
 const posts = sortedEnPosts(await getCollection('blog'));
 ---
 <Base title="Blog — Jin-Guo Liu Group">
-  <p class="crumb">~/blog</p>
-  <h1 class="prompt-h">Blog</h1>
+  <h1>Blog</h1>
   <PostList posts={posts} />
 
   <div class="section">
-    <h2 class="prompt-h">Elsewhere</h2>
+    <h2>Elsewhere</h2>
     <div class="card">
       <strong>Scientific Computing for Physicists</strong> — our group's book on
       scientific computing with Julia: tensor networks, optimization, numerical methods.

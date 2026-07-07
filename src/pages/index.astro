@@ -8,22 +8,21 @@ const latest = sortedEnPosts(await getCollection('blog')).slice(0, 3);
 ---
 <Base title="Jin-Guo Liu Group — quantum computation ∩ scientific computing">
   <section class="hero">
-    <pre aria-hidden="true">$ whoami</pre>
     <h1>Jin-Guo Liu Group <span class="meta">@ HKUST(Guangzhou)</span></h1>
-    <p class="tagline cursor">(Computation ∩ Physics ∩ Coding) \ Boring_study</p>
+    <p class="tagline">(Computation ∩ Physics ∩ Coding) \ Boring study</p>
     <p>
       We study quantum computation, tensor networks, and computational
       complexity — and we build the open-source tools to match. Research here is
       AI-native: humans and AI agents develop, test, and document our software together.
     </p>
     <p>
-      <a class="btn-cmd" href="/research/">[ cat research.md ]</a>
-      <a class="btn-cmd" href="/join/">[ ./join_us.sh ]</a>
+      <a class="btn" href="/research/">Research →</a>
+      <a class="btn" href="/join/">Join us →</a>
     </p>
   </section>
 
   <section class="section">
-    <h2 class="prompt-h">Live coding, every Friday</h2>
+    <h2>Live coding, every Friday</h2>
     <p>
       Jin-Guo live-codes every Friday at 20:00 (GMT+8) — open to everyone.
       <a href="https://calendar.app.google/SnTMJ6dvurMCVXhi9">Add to calendar →</a>
@@ -31,22 +30,22 @@ const latest = sortedEnPosts(await getCollection('blog')).slice(0, 3);
   </section>
 
   <section class="section">
-    <h2 class="prompt-h">ls software/ | head</h2>
+    <h2>Software</h2>
     <p class="meta">
       {(software as any[]).slice(0, 5).map((s, i) =>
-        <>{i > 0 && '  '}<a href={s.repo}>{s.name}</a></>)}
-      &nbsp;<a href="/research/">…more</a>
+        <>{i > 0 && ' · '}<a href={s.repo}>{s.name}</a></>)}
+      &nbsp;<a href="/research/">more →</a>
     </p>
   </section>
 
   <section class="section">
-    <h2 class="prompt-h">tail -3 blog/</h2>
+    <h2>Recent posts</h2>
     <PostList posts={latest} />
-    <p><a href="/blog/">all posts →</a></p>
+    <p><a href="/blog/">All posts →</a></p>
   </section>
 
   <section class="section">
-    <h2 class="prompt-h">Contact</h2>
+    <h2>Contact</h2>
     <p>
       <a href="mailto:jinguoliu@hkust-gz.edu.cn">jinguoliu@hkust-gz.edu.cn</a><br />
       <a href="https://amat.hkust-gz.edu.cn/">Advanced Materials Thrust</a>, Function Hub,
@@ -62,10 +61,9 @@ const latest = sortedEnPosts(await getCollection('blog')).slice(0, 3);
   </section>
 </Base>
 <style>
-  .hero pre { border: 0; background: none !important; padding: 0; color: var(--muted); }
-  .hero h1 { margin: 0.2rem 0 0.6rem; }
+  .hero h1 { margin: 1rem 0 0.6rem; }
   .tagline { font-family: var(--font-mono); color: var(--accent); font-size: 1.05rem; }
-  .hero .btn-cmd { margin-right: 0.6rem; }
+  .hero .btn { margin-right: 0.6rem; }
   figure { margin: 1rem 0 0; }
   figure img { border: 1px solid var(--border); border-radius: 6px; }
 </style>
