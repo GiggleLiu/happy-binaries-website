@@ -36,7 +36,7 @@
 - date: 2024-07-09
   venue: JuliaCon 2024
   venue_url: https://juliacon.org/2024/
-  title: Tensor Network for Quantum Error Correction
+  title: Tensor Network for Quantum Error Correction (by Zhong-Yi Ni)
   type: talk
   links:
     - label: Video
