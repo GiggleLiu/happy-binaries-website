@@ -1,0 +1,24 @@
+- name: Yao.jl
+  repo: https://github.com/QuantumBFS/Yao.jl
+  blurb: Extensible, efficient quantum algorithm design framework — one of the fastest quantum circuit simulators.
+  role: co-author
+- name: OMEinsum.jl
+  repo: https://github.com/under-Peter/OMEinsum.jl
+  blurb: Einstein-summation engine with hyper-optimized contraction-order search, the backbone of our tensor-network stack.
+  role: maintainer
+- name: GenericTensorNetworks.jl
+  repo: https://github.com/QuEraComputing/GenericTensorNetworks.jl
+  blurb: Solution-space properties of combinatorial optimization problems via generic tensor networks.
+  role: author
+- name: TensorQEC.jl
+  repo: https://github.com/QuantumBFS/TensorQEC.jl
+  blurb: Tensor-network decoding and simulation of quantum error-correcting codes.
+  role: group project
+- name: ProblemReductions.jl
+  repo: https://github.com/Happy-Binaries/ProblemReductions.jl
+  blurb: Reductions between computationally hard problems (spin glass, SAT, ...).
+  role: group project
+- name: TensorInference.jl
+  repo: https://github.com/TensorBFS/TensorInference.jl
+  blurb: Probabilistic inference on graphical models with tensor networks and differentiable programming.
+  role: author
