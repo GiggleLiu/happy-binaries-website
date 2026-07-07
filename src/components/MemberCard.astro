@@ -1,0 +1,25 @@
+---
+interface Props { person: any; }
+const { person } = Astro.props;
+---
+<div class="card member" class:list={{ alumni: person.role === 'alumni' }}>
+  <img src={person.avatar} alt={person.name} width="110" height="110" loading="lazy" />
+  <div>
+    <h3>{person.name} <span class="meta">({person.hanzi})</span></h3>
+    {person.bio && <p>{person.bio}</p>}
+    {person.links && (
+      <p class="meta">{person.links.map((l: any, i: number) =>
+        <>{i > 0 && ' · '}<a href={l.url}>{l.label}</a></>)}</p>
+    )}
+    {person.tags && <span>{person.tags.map((t: string) => <span class="tag">{t}</span>)}</span>}
+  </div>
+</div>
+<style>
+  .member { display: flex; gap: 1.3rem; }
+  .member img { border-radius: 6px; border: 1px solid var(--border);
+                object-fit: cover; flex-shrink: 0; }
+  .member h3 { margin: 0 0 0.4rem; }
+  .member p { margin: 0 0 0.5rem; font-size: 0.95rem; }
+  .alumni { opacity: 0.75; }
+  @media (max-width: 540px) { .member { flex-direction: column; } }
+</style>

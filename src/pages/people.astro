@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import MemberCard from '../components/MemberCard.astro';
+import people from '../data/people.yaml';
+
+const groups: [string, string][] = [
+  ['advisor', 'Advisor'], ['phd', 'PhD Students'],
+  ['ra', 'Research Assistants'], ['alumni', 'Alumni'],
+];
+---
+<Base title="People — Jin-Guo Liu Group">
+  <p class="crumb">~/people</p>
+  <h1 class="prompt-h">People</h1>
+  {groups.map(([role, label]) => {
+    const members = (people as any[]).filter((p) => p.role === role);
+    return members.length > 0 && (
+      <section class="section">
+        <h2 class="prompt-h">{label}</h2>
+        {members.map((p) => <MemberCard person={p} />)}
+      </section>
+    );
+  })}
+</Base>
