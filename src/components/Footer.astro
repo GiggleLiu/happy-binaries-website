@@ -1,0 +1,19 @@
+---
+const year = new Date().getFullYear();
+---
+<footer>
+  <div class="inner meta">
+    <span>© {year} Jin-Guo Liu Group · HKUST(GZ)</span>
+    <span>
+      <a href="mailto:jinguoliu@hkust-gz.edu.cn">email</a> ·
+      <a href="https://github.com/CodingThrust">github</a> ·
+      <a href="http://zulip.hkust-gz.edu.cn/">zulip</a> ·
+      <a href="/feed.xml">rss</a>
+    </span>
+  </div>
+</footer>
+<style>
+  footer { border-top: 1px solid var(--border); margin-top: 3rem; }
+  .inner { max-width: var(--wide); margin: 0 auto; padding: 1.2rem 1.25rem;
+           display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; justify-content: space-between; }
+</style>

@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+const interests = ['quantum information', 'computational complexity', 'tensor networks',
+                   'Julia programming', 'quantum simulation', 'quantum error correction'];
+---
+<Base title="About — Jin-Guo Liu" description="Jin-Guo Liu, computational physicist at HKUST(Guangzhou).">
+  <div class="who">
+    <img src="/assets/avatars/jinguoliu.png" alt="Jin-Guo Liu" width="130" height="130" />
+    <div>
+      <h1>Jin-Guo Liu <span class="meta">(刘金国)</span></h1>
+      <p class="meta">Computational physicist · Open-source enthusiast</p>
+    </div>
+  </div>
+  <p>
+    Assistant professor at the Hong Kong University of Science and Technology
+    (Guangzhou), Advanced Materials Thrust and the Quantum Science and
+    Technology Center. PhD from Nanjing University (2017); postdoc at the
+    Institute of Physics (CAS) and Harvard University. I love the open-source
+    community and believe in making science accessible through code — I am one
+    of the main authors of the quantum simulator
+    <a href="https://github.com/QuantumBFS/Yao.jl">Yao.jl</a>.
+  </p>
+  <p>{interests.map((t) => <span class="tag">{t}</span>)}</p>
+
+  <section class="section">
+    <h2>Links</h2>
+    <ul>
+      <li>CV: <a href="https://github.com/GiggleLiu/CV/raw/master/cv.pdf">download PDF</a></li>
+      <li>Google Scholar: <a href="https://scholar.google.com/citations?user=4edw228AAAAJ">Jin-Guo Liu</a></li>
+      <li>GitHub: <a href="https://github.com/GiggleLiu">GiggleLiu</a></li>
+      <li>X / Twitter: <a href="https://twitter.com/GiggleLiu">@GiggleLiu</a></li>
+      <li>Zhihu: <a href="https://www.zhihu.com/people/leo-31-42">GiggleLiu</a></li>
+      <li>University profile:
+        <a href="https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page?id=2498">HKUST(GZ)</a></li>
+      <li>Email: <a href="mailto:jinguoliu@hkust-gz.edu.cn">jinguoliu@hkust-gz.edu.cn</a></li>
+    </ul>
+  </section>
+</Base>
+<style>
+  .who { display: flex; gap: 1.3rem; align-items: center; margin-bottom: 1rem; }
+  .who img { border-radius: 6px; border: 1px solid var(--border); }
+</style>

@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import software from '../data/software.yaml';
+import talks from '../data/talks.yaml';
+
+const topics = [
+  {
+    title: 'Tensor networks',
+    body: 'Contraction-order optimization and generic tensor networks — a unified framework we use to compute solution-space properties of combinatorial optimization problems and to run probabilistic inference on graphical models.',
+  },
+  {
+    title: 'Quantum computation & error correction',
+    body: 'Quantum algorithm design and simulation (Yao.jl), tensor-network decoders for quantum error-correcting codes, universal quantum computing with a single arbitrary gate, and algorithms for neutral-atom (Rydberg) hardware.',
+  },
+  {
+    title: 'Computational complexity',
+    body: 'The nature of computation from a physics perspective: problem reductions, automated discovery of branching rules with optimal complexity, and embedding hard problems into physical devices.',
+  },
+  {
+    title: 'AI-native scientific computing',
+    body: 'Automatic differentiation through numerical methods, and human-AI collaboration workflows for building research software — test-driven vibe coding, agent infrastructure, sustainable automation.',
+  },
+];
+---
+<Base title="Research — Jin-Guo Liu Group">
+  <h1>Research</h1>
+  <p>
+    We sit at the intersection of computation and physics: using numerical
+    methods to simulate the physical world, and using physics to understand the
+    nature of computation. Our full publication list lives on
+    <a href="https://scholar.google.com/citations?user=4edw228AAAAJ">Google Scholar ↗</a>.
+  </p>
+
+  {topics.map((t) => (
+    <section class="section">
+      <h2>{t.title}</h2>
+      <p>{t.body}</p>
+    </section>
+  ))}
+
+  <section class="section">
+    <h2>Open-source software</h2>
+    <p>Research here ships as open-source Julia packages. Group organizations:
+      <a href="https://github.com/CodingThrust">CodingThrust</a>,
+      <a href="https://github.com/QuantumBFS">QuantumBFS</a>,
+      <a href="https://github.com/Happy-Binaries">Happy-Binaries</a>.</p>
+    {(software as any[]).map((s) => (
+      <div class="card">
+        <strong><a href={s.repo}>{s.name}</a></strong>
+        <span class="tag">{s.role}</span>
+        <p style="margin: 0.3rem 0 0;">{s.blurb}</p>
+      </div>
+    ))}
+  </section>
+
+  <section class="section">
+    <h2>Selected talks</h2>
+    <details>
+      <summary class="meta">{(talks as any[]).length} talks since 2023 — expand</summary>
+      <ul>
+        {(talks as any[]).map((t) => (
+          <li>
+            <span class="meta">{String(t.date).slice(0, 10)}</span> —
+            {t.venue_url ? <a href={t.venue_url}>{t.venue}</a> : t.venue}
+            {t.title && <> · <em>{t.title}</em></>}
+            <span class="tag">{t.type}</span>
+            {t.links && t.links.map((l: any) => <> <a href={l.url}>[{l.label}]</a></>)}
+          </li>
+        ))}
+      </ul>
+    </details>
+  </section>
+</Base>
