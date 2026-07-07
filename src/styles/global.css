@@ -17,6 +17,15 @@ h2 { font-size: 1.35rem; margin-top: 2.5rem; }
 h3 { font-size: 1.1rem; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
+/* prose links must not rely on color alone (a11y): dim underline, full on hover */
+main :is(p, li, figcaption) a:not(.btn-cmd):not(.tag) {
+  text-decoration: underline;
+  text-decoration-color: var(--accent-dim);
+  text-underline-offset: 2px;
+}
+main :is(p, li, figcaption) a:not(.btn-cmd):not(.tag):hover {
+  text-decoration-color: var(--accent);
+}
 img { max-width: 100%; height: auto; }
 hr { border: 0; border-top: 1px solid var(--border); }
 blockquote { border-left: 3px solid var(--accent-dim); margin-left: 0;
