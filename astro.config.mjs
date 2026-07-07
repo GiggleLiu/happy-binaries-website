@@ -15,9 +15,10 @@ export default defineConfig({
     shikiConfig: { theme: 'github-dark-default' },
   },
   redirects: {
+    // /People→/people and /Research→/research live in scripts/ci-case-redirects.mjs:
+    // on a case-insensitive filesystem (macOS dev machines) their stubs would
+    // overwrite the real pages in dist/. CI (Linux) writes them post-build.
     '/Blogs': '/blog',
-    '/Research': '/research',
-    '/People': '/people',
     '/PhdProgram': '/join',
     '/Personal': '/about',
     '/training': '/join',

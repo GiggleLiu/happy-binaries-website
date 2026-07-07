@@ -1582,6 +1582,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: node scripts/ci-case-redirects.mjs
       - run: npm run check
       - name: Deploy
         if: github.ref == 'refs/heads/master'
@@ -1648,12 +1649,21 @@ Expected: build succeeds; `OK` from the checker.
 - [ ] **Step 2: Redirect spot-checks**
 
 ```bash
-for p in Blogs Research People PhdProgram Personal training culture workflow \
+for p in Blogs PhdProgram Personal training culture workflow \
          vibe-coding git-workflow sustainable-automation give-ai-agents-a-clock; do
   grep -q 'http-equiv="refresh"' "dist/$p/index.html" && echo "OK /$p" || echo "FAIL /$p";
 done
 ```
-Expected: 12 × OK.
+Expected: 10 × OK.
+
+**Amendment (2026-07-07):** `/People` and `/Research` redirects cannot be
+checked locally — on a case-insensitive filesystem (macOS) their stubs would
+be the same file as the real `/people/` and `/research/` pages. They are
+written in CI by `scripts/ci-case-redirects.mjs` (which no-ops on
+case-insensitive filesystems) and are verified in production after merge:
+`curl -sL https://www.jinguo-group.science/People/ | grep -o '<title>[^<]*'`.
+Locally, verify instead that the real pages were NOT clobbered:
+`grep -L 'http-equiv' dist/people/index.html dist/research/index.html` prints both paths.
 
 - [ ] **Step 3: Feature spot-checks**
 
