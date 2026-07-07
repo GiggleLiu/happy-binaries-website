@@ -59,6 +59,12 @@ Orphan Franklin pages (`culture.md`, `training.md`, `workflow.md`) fold into Joi
 
 ## Visual design system
 
+> **Amendment (2026-07-07, from user preview feedback):** the terminal
+> *motifs* were removed — no prompt markers, blinking cursor, command-style
+> button labels, path breadcrumbs, or shell-command headings. Headings and
+> CTAs use plain descriptive language ("Research", "Join us →"). The dark
+> palette, mono headings/nav/meta, and overall quiet identity remain.
+
 Identity: **a physicist's terminal** — dark-first, monospace-led, restrained. The
 terminal is a motif in the chrome; prose stays maximally readable.
 
