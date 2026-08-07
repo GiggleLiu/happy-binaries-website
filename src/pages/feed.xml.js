@@ -1,9 +1,9 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import { sortedEnPosts, postUrl } from '../lib/blog';
+import { sortedIndexPosts, postUrl } from '../lib/blog';
 
 export async function GET(context) {
-  const posts = sortedEnPosts(await getCollection('blog'));
+  const posts = sortedIndexPosts(await getCollection('blog'));
   return rss({
     title: 'Jin-Guo Liu Group',
     description: 'Quantum computation, tensor networks, and open-source scientific computing at HKUST(GZ).',

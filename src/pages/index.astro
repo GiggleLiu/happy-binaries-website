@@ -2,9 +2,9 @@
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
 import { getCollection } from 'astro:content';
-import { sortedEnPosts } from '../lib/blog';
+import { sortedIndexPosts } from '../lib/blog';
 import software from '../data/software.yaml';
-const latest = sortedEnPosts(await getCollection('blog')).slice(0, 3);
+const latest = sortedIndexPosts(await getCollection('blog')).slice(0, 3);
 ---
 <Base title="Jin-Guo Liu Group — quantum computation ∩ scientific computing">
   <section class="hero">
