@@ -31,5 +31,7 @@ const dateStr = entry.data.date.toISOString().slice(0, 10);
 <style>
   article { max-width: var(--measure); margin: 0 auto; }
   .prose :global(img) { border-radius: 6px; }
+  .prose :global(.img-row) { display: flex; gap: 1rem; }
+  .prose :global(.img-row img) { flex: 1 1 0; min-width: 0; }
   .prose :global(h2) { border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
 </style>

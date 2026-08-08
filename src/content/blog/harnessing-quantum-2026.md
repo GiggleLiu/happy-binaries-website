@@ -24,9 +24,10 @@ lang: zh
 
 最后暑期学校的主要活动定为“自动化科研挑战”：学生须在 4 天内完成至少一个挑战并提交 PR，由导师评阅。在王磊老师的帮助下，我们召集了大批老师，洋洋洒洒准备了 70 多道题（不到 30% 由 AI 生成）。与其说是教学，不如说更多是一场“感受”——感受 AI 自动化科研带来的变化，并从中感悟未来的方向。我们设计的两款文化衫很好地反映了这个主题：两句口号都写在 agent 那道经典的权限确认菜单上——“Yes / Yes, and always allow access / No”都被划掉，光标停在第 4 个选项上。
 
-|  |  |
-| --- | --- |
-| ![人类进化图 T 恤：从猿到直立人，到低头看手机，再到落座电脑前；选中的选项是 You Only Live Once (YOLO)](/assets/images/harnessing-quantum-2026/tshirt-yolo.png) | ![阿拉丁神灯精灵 T 恤：选中的选项是 All You Need is a Prompt](/assets/images/harnessing-quantum-2026/tshirt-aladin.png) |
+<div class="img-row">
+  <img src="/assets/images/harnessing-quantum-2026/tshirt-yolo.png" alt="人类进化图 T 恤：从猿到直立人，到低头看手机，再到落座电脑前；选中的选项是 You Only Live Once (YOLO)">
+  <img src="/assets/images/harnessing-quantum-2026/tshirt-aladin.png" alt="阿拉丁神灯精灵 T 恤：选中的选项是 All You Need is a Prompt">
+</div>
 
 左边选中的是 **You Only Live Once (YOLO)**——人生只活一次，不要再一行一行审核代码，既然选择了 Agent，就选择相信它。右边选中的是 **All You Need is a Prompt**——擦一擦神灯，许个愿就够了，自动化科研就是一句话的事情。
 
