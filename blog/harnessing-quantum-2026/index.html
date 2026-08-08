@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>淘金比赛：智御量子暑期学校观察与反思 — Jin-Guo Liu Group</title><meta name="description" content="100 多名学生、AI agent 与 70 多道题的暑期黑客松：关于淘金、学术诚信，以及自动化科研半年后的世界。"><link rel="icon" href="/assets/favicon.png"><link rel="canonical" href="https://www.jinguo-group.science/blog/harnessing-quantum-2026/"><link rel="alternate" type="application/rss+xml" title="Jin-Guo Liu Group" href="/feed.xml"><link rel="stylesheet" href="/_astro/_slug_.6-8wQE5X.css">
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>淘金比赛：智御量子暑期学校观察与反思 — Jin-Guo Liu Group</title><meta name="description" content="100 多名学生、AI agent 与 70 多道题的暑期黑客松：关于淘金、学术诚信，以及自动化科研半年后的世界。"><link rel="icon" href="/assets/favicon.png"><link rel="canonical" href="https://www.jinguo-group.science/blog/harnessing-quantum-2026/"><link rel="alternate" type="application/rss+xml" title="Jin-Guo Liu Group" href="/feed.xml"><link rel="stylesheet" href="/_astro/_slug_.CRZzX2om.css">
 <link rel="stylesheet" href="/_astro/_slug_.C6WtIVDV.css"></head> <body> <header data-astro-cid-dmqpwcec> <nav data-astro-cid-dmqpwcec> <a class="logo" href="/" data-astro-cid-dmqpwcec>Jin-Guo Liu Group</a> <ul data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec><a href="/research/" data-astro-cid-dmqpwcec> Research</a></li><li data-astro-cid-dmqpwcec><a href="/people/" data-astro-cid-dmqpwcec> People</a></li><li data-astro-cid-dmqpwcec><a href="/blog/" aria-current="page" data-astro-cid-dmqpwcec> Blog</a></li><li data-astro-cid-dmqpwcec><a href="/join/" data-astro-cid-dmqpwcec> Join Us</a></li><li data-astro-cid-dmqpwcec><a href="/about/" data-astro-cid-dmqpwcec> About</a></li> <li data-astro-cid-dmqpwcec><a href="https://scholar.google.com/citations?user=4edw228AAAAJ" data-astro-cid-dmqpwcec>Publications ↗</a></li> </ul> </nav> </header>  <main> <article lang="zh" data-astro-cid-gvpn4u4b> <p class="meta" data-astro-cid-gvpn4u4b><a href="/blog/" data-astro-cid-gvpn4u4b>← Blog</a></p> <h1 data-astro-cid-gvpn4u4b>淘金比赛：智御量子暑期学校观察与反思</h1> <p class="meta" data-astro-cid-gvpn4u4b> 2026-08-07 <span class="tag" data-astro-cid-gvpn4u4b>ai</span><span class="tag" data-astro-cid-gvpn4u4b>agents</span><span class="tag" data-astro-cid-gvpn4u4b>education</span><span class="tag" data-astro-cid-gvpn4u4b>research</span><span class="tag" data-astro-cid-gvpn4u4b>automation</span>  </p> <div class="prose" data-astro-cid-gvpn4u4b><p>7 月 27–31 日，我们依托合肥国家实验室数学与基础物理研究院，举办了“智御量子暑期学校”黑客松，有 100 多位学生参与。目的很朴素：鼓励学生尝试用 AI 辅助科研，互相分享经验，互相学习。筹备期间我问了 AI 一个问题来辅助筛选：“这些同学中，哪些学生在未来最有可能成为伟大的科学家？”——希望被选召的孩子们不辜负 AI 的期望，好好带路。</p>
 <p>这是一场无法被计划的活动，因为任何计划都会被 AI 的发展和自己认知的变化彻底打乱。科幻小说里有个著名的“皇帝的金斧头”比喻：从前有个乞丐，幻想皇帝过的是什么日子——他能想到的最好生活，就是用金斧头砍柴、用金扁担挑水。贫穷限制的不只是生活，更是想象力：他只能在自己已有的经验上镀金。这个时代，我们同样很难看清未来的发展趋势。很多人想象中的未来，是让 AI 辅助科研、批量产出高质量论文。可是，未来真的是这样吗？</p>
 <p>我很喜欢王磊老师劝学生订阅 Agent 时的那句话：“只要花 200 刀，就能让你看到半年后的世界。”今年 2 月，我有幸先瞥见了半年后的两个趋势：一，学生大量使用 agent 辅助科研；二，教学全面走向无人化。</p>
@@ -8,20 +8,10 @@
 <p>暑期学校最初设想的是更教学导向的方案：请每位老师把解决物理问题的经验炼化成一个个“skill”，汇入 <a href="https://github.com/QuantumBFS/quantum.harness">quantum.harness</a> 仓库，用专家的眼光把关，保证 AI 工作的稳定性，让学生学着以 skill 为舵“驾驶”AI agent 解题，并从中学习多体计算问题的技巧。当时我相信，专家的宏观专业知识是 AI 无法替代的。</p>
 <p>但这个想法很快就失效了。Fable 5、GPT-5.6 Sol 和 Kimi K3 相继发布之后，我发现大多数人类专家凝练的 skill 正在迅速成为历史包袱——这种转变，直接导致我们直到开营前半个月，program 都还没定下来。陶哲轩评论说，现在是个“证明过剩”的时代；物理也是一样，当 AI 求解问题的能力开始超越人类，再去教给学生们解题过程，是否还合适？</p>
 <p>最后暑期学校的主要活动定为“自动化科研挑战”：学生须在 4 天内完成至少一个挑战并提交 PR，由导师评阅。在王磊老师的帮助下，我们召集了大批老师，洋洋洒洒准备了 70 多道题（不到 30% 由 AI 生成）。与其说是教学，不如说更多是一场“感受”——感受 AI 自动化科研带来的变化，并从中感悟未来的方向。我们设计的两款文化衫很好地反映了这个主题：两句口号都写在 agent 那道经典的权限确认菜单上——“Yes / Yes, and always allow access / No”都被划掉，光标停在第 4 个选项上。</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><img src="/assets/images/harnessing-quantum-2026/tshirt-yolo.png" alt="人类进化图 T 恤：从猿到直立人，到低头看手机，再到落座电脑前；选中的选项是 You Only Live Once (YOLO)"></td><td><img src="/assets/images/harnessing-quantum-2026/tshirt-aladin.png" alt="阿拉丁神灯精灵 T 恤：选中的选项是 All You Need is a Prompt"></td></tr></tbody></table>
+<div class="img-row">
+  <img src="/assets/images/harnessing-quantum-2026/tshirt-yolo.png" alt="人类进化图 T 恤：从猿到直立人，到低头看手机，再到落座电脑前；选中的选项是 You Only Live Once (YOLO)">
+  <img src="/assets/images/harnessing-quantum-2026/tshirt-aladin.png" alt="阿拉丁神灯精灵 T 恤：选中的选项是 All You Need is a Prompt">
+</div>
 <p>左边选中的是 <strong>You Only Live Once (YOLO)</strong>——人生只活一次，不要再一行一行审核代码，既然选择了 Agent，就选择相信它。右边选中的是 <strong>All You Need is a Prompt</strong>——擦一擦神灯，许个愿就够了，自动化科研就是一句话的事情。</p>
 <h2 id="淘金比赛">淘金比赛</h2>
 <p>本质上，这是一个“淘金比赛”：在 70 多个问题构成的河床上，以 AI agent 为铲，以结果验证器为筛，试图淘出金子。</p>
