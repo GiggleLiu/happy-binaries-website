@@ -5,3 +5,5 @@
 node_modules/
 dist/
 .astro/
+Manifest.toml
+__site/
